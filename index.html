@@ -61,7 +61,7 @@
 
         /* --- Buttons --- */
         .btn { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; padding: 1rem 2rem; border-radius: 12px; cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; gap: 0.75rem; transition: all 0.3s ease; font-weight: 500; border: none; }
-        .btn svg { width: 14px; height: 14px; transition: transform 0.3s ease; }
+        .btn svg { width: 14px; height: 14px; }
         .btn-primary { background: var(--accent-gradient); color: white; box-shadow: 0 4px 15px var(--shadow-lg); }
         .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 8px 30px var(--shadow-lg); }
         .btn-secondary { background: var(--bg-elevated); color: var(--text); border: 1px solid var(--border); }
@@ -78,6 +78,7 @@
         .hero-title em { font-style: italic; background: var(--accent-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
         .hero-description { font-size: 1.15rem; color: var(--text-muted); max-width: 480px; margin-bottom: 2.5rem; opacity: 0; animation: fadeIn 0.8s ease 0.5s forwards; line-height: 1.8; }
         .hero-cta { display: flex; gap: 1rem; opacity: 0; animation: fadeIn 0.8s ease 0.6s forwards; }
+        
         .hero-right { position: relative; display: flex; align-items: center; justify-content: center; padding-right: 6rem; }
         .scraper-showcase { width: 100%; max-width: 500px; background: #1E293B; border-radius: 20px; border: 1px solid #334155; padding: 1.5rem; box-shadow: 0 25px 60px rgba(0,0,0,0.2); font-family: 'JetBrains Mono', monospace; animation: float 6s ease-in-out infinite; }
         @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
@@ -96,7 +97,7 @@
         @keyframes progressAnim { 0% { width: 0; } 100% { width: 100%; } }
         @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4); } 70% { box-shadow: 0 0 0 8px rgba(16, 185, 129, 0); } 100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); } }
 
-        /* --- Common Sections --- */
+        /* --- Section Common --- */
         section { padding: 7rem 6rem; position: relative; }
         .section-label { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.25em; color: var(--accent); margin-bottom: 0.75rem; display: flex; align-items: center; gap: 1rem; }
         .section-label::before { content: ''; width: 24px; height: 2px; background: var(--accent-gradient); border-radius: 1px; }
@@ -115,12 +116,13 @@
 
         /* --- Experience Section --- */
         .timeline { display: flex; flex-direction: column; }
-        .timeline-item { display: grid; grid-template-columns: 200px 1fr; gap: 4rem; padding: 3rem 0; border-bottom: 1px solid var(--border-light); transition: all 0.3s ease; border-radius: 20px; position: relative; }
+        .timeline-item { display: grid; grid-template-columns: 200px 1fr; gap: 4rem; padding: 3rem 0; border-bottom: 1px solid var(--border-light); transition: all 0.3s ease; border-radius: 20px; }
         .timeline-item:hover { background: var(--bg-elevated); margin: 0 -2rem; padding: 3rem 2rem; }
         .timeline-date { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; text-transform: uppercase; color: var(--text-subtle); padding-top: 0.4rem; }
         .timeline-content h3 { font-family: 'Instrument Serif', serif; font-size: 1.6rem; font-weight: 400; margin-bottom: 0.5rem; color: var(--text); }
         .timeline-company { font-size: 1rem; color: var(--accent); margin-bottom: 1.5rem; font-weight: 600; }
-        .timeline-description li { margin-bottom: 0.8rem; padding-left: 1.75rem; position: relative; line-height: 1.8; color: var(--text-muted); list-style: none; }
+        .timeline-description { color: var(--text-muted); font-size: 1rem; list-style: none; }
+        .timeline-description li { margin-bottom: 0.8rem; padding-left: 1.75rem; position: relative; line-height: 1.8; }
         .timeline-description li::before { content: ''; position: absolute; left: 0; top: 0.65rem; width: 7px; height: 7px; background: var(--accent-gradient); border-radius: 50%; }
 
         /* --- Skills Section --- */
@@ -140,12 +142,11 @@
 
         /* --- Projects Section --- */
         .projects-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; }
-        .project-card { background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 30px; overflow: hidden; transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1); cursor: pointer; }
+        .project-card { background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 30px; overflow: hidden; transition: 0.4s; cursor: pointer; }
         .project-card:hover { border-color: var(--accent); transform: translateY(-10px); box-shadow: 0 30px 70px var(--shadow-lg); }
         .project-card.featured { grid-column: span 2; display: grid; grid-template-columns: 1.2fr 1fr; gap: 0; }
-        .project-preview { height: 360px; position: relative; overflow: hidden; background: #F1F5F9; border-right: 1px solid var(--border-light); }
-        .project-card.featured .project-preview { height: 100%; }
-        .dashboard-mockup { position: absolute; top: 1.5rem; left: 1.5rem; right: -2rem; bottom: -2rem; background: white; border-radius: 16px 0 0 0; border: 1px solid var(--border); padding: 1.25rem; display: flex; flex-direction: column; gap: 1rem; transition: 0.4s ease; }
+        .project-preview { height: 100%; position: relative; overflow: hidden; background: #F1F5F9; border-right: 1px solid var(--border-light); }
+        .dashboard-mockup { position: absolute; top: 1.5rem; left: 1.5rem; right: -2rem; bottom: -2rem; background: white; border-radius: 16px 0 0 0; border: 1px solid var(--border); padding: 1.25rem; display: flex; flex-direction: column; gap: 1rem; }
         .mock-nav { display: flex; justify-content: space-between; border-bottom: 1px solid var(--border-light); padding-bottom: 0.75rem; }
         .mock-logo { font-size: 0.8rem; font-weight: 700; color: var(--pin-red); display: flex; align-items: center; gap: 4px; }
         .mock-logo::before { content: 'P'; background: var(--pin-red); color: white; width: 18px; height: 18px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.6rem; }
@@ -158,18 +159,41 @@
         .project-content { padding: 3rem; display: flex; flex-direction: column; justify-content: center; }
         .project-tag { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: var(--accent); margin-bottom: 0.75rem; text-transform: uppercase; letter-spacing: 0.15em; }
         .project-title { font-family: 'Instrument Serif', serif; font-size: 1.8rem; margin-bottom: 1rem; color: var(--text); }
-        .project-card.featured .project-title { font-size: 2.2rem; }
         .project-description { color: var(--text-muted); font-size: 1.05rem; margin-bottom: 1.5rem; }
         .project-tech { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-bottom: 1.5rem; }
         .tech-tag { font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; padding: 0.4rem 0.8rem; background: var(--bg-subtle); border-radius: 8px; color: var(--text-muted); border: 1px solid var(--border-light); }
-        .project-status { display: inline-flex; align-items: center; gap: 0.6rem; font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: var(--text-muted); margin-top: 1.5rem; }
+        .project-status { display: inline-flex; align-items: center; gap: 0.6rem; font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: #10B981; margin-top: 1.5rem; font-weight: 600; }
         .badge-dot { width: 8px; height: 8px; background: #10B981; border-radius: 50%; animation: pulse 2s infinite; }
 
-        /* --- Footer & Contact --- */
-        #contact { text-align: center; padding: 6rem; background: var(--bg-elevated); border-radius: 40px 40px 0 0; margin: 3rem 3rem 0; border: 1px solid var(--border-light); }
+        /* --- Contact Section --- */
+        #contact { text-align: center; padding: 7rem 6rem; background: var(--bg-elevated); border-radius: 40px 40px 0 0; margin: 3rem 3rem 0; border: 1px solid var(--border-light); border-bottom: none; }
+        .contact-title { font-family: 'Instrument Serif', serif; font-size: clamp(2.5rem, 8vw, 5rem); margin-bottom: 1.5rem; }
+        .contact-title em { font-style: italic; background: var(--accent-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .contact-subtitle { font-size: 1.1rem; color: var(--text-muted); max-width: 480px; margin: 0 auto 3rem; line-height: 1.8; }
+        .contact-links { display: flex; justify-content: center; gap: 1rem; }
+        .contact-link { display: flex; align-items: center; gap: 0.6rem; padding: 1rem 1.5rem; background: var(--bg-subtle); border: 1px solid var(--border); border-radius: 14px; color: var(--text); text-decoration: none; font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; transition: 0.3s; font-weight: 500; }
+        .contact-link:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-dim); transform: translateY(-4px); }
+        .contact-link svg { width: 18px; height: 18px; }
+
+        /* Email Modal */
+        .modal-overlay { position: fixed; inset: 0; background: rgba(15, 23, 42, 0.6); backdrop-filter: blur(8px); display: flex; align-items: center; justify-content: center; z-index: 1000; opacity: 0; visibility: hidden; transition: 0.3s ease; }
+        .modal-overlay.active { opacity: 1; visibility: visible; }
+        .modal-content { background: var(--bg-elevated); border-radius: 24px; padding: 3rem; max-width: 400px; width: 90%; text-align: center; position: relative; border: 1px solid var(--border); transform: scale(0.9); transition: 0.3s; }
+        .modal-overlay.active .modal-content { transform: scale(1); }
+        .modal-close { position: absolute; top: 1rem; right: 1rem; width: 36px; height: 36px; border: none; background: var(--bg-subtle); border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+        .modal-icon { width: 70px; height: 70px; background: var(--accent-gradient); border-radius: 20px; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; box-shadow: 0 10px 30px var(--shadow-lg); }
+        .modal-title { font-family: 'Instrument Serif', serif; font-size: 1.75rem; color: var(--text); margin-bottom: 1rem; }
+        .modal-email { font-family: 'JetBrains Mono', monospace; font-size: 0.95rem; color: var(--text-muted); background: var(--bg-subtle); padding: 0.75rem 1.25rem; border-radius: 10px; margin-bottom: 1.5rem; border: 1px solid var(--border-light); }
+        .modal-btn { display: inline-flex; align-items: center; justify-content: center; gap: 0.6rem; background: var(--accent-gradient); color: white; padding: 1rem 2rem; border-radius: 12px; text-decoration: none; font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; font-weight: 500; }
+
+        /* Footer */
         footer { padding: 2.5rem 6rem; display: flex; justify-content: space-between; background: var(--bg-elevated); margin: 0 3rem 3rem; border-radius: 0 0 40px 40px; border: 1px solid var(--border-light); border-top: none; font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; }
+        .footer-right { display: flex; gap: 2rem; }
+        .footer-right a { color: var(--text-subtle); text-decoration: none; }
 
         @keyframes fadeIn { to { opacity: 1; } }
+        .reveal { opacity: 0; transform: translateY(30px); transition: 0.7s cubic-bezier(0.4, 0, 0.2, 1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
     </style>
 </head>
 <body>
@@ -238,15 +262,28 @@
 
     <section id="experience">
         <div class="section-label">02 — Experience</div>
+        <h2 class="section-title reveal">Professional <em>journey</em></h2>
         <div class="timeline">
             <div class="timeline-item reveal">
                 <div class="timeline-date">Jan 2026 — Apr 2026</div>
                 <div class="timeline-content">
                     <h3>Digital Marketing & Analytics Coordinator</h3>
-                    <div class="timeline-company">Terradomi Candle Co.</div>
+                    <div class="timeline-company">Terradomi Candle Co. — Ontario, Canada</div>
                     <ul class="timeline-description">
-                        <li>Automated Pinterest reporting using Python/Playwright.</li>
-                        <li>Analyzed performance via GA4 to optimize ROAS.</li>
+                        <li>Automated daily Pinterest reporting by developing a custom Python scraper (Playwright).</li>
+                        <li>Analyzed website traffic and sales performance via GA4 to optimize ROAS.</li>
+                        <li>Executed technical SEO strategies aligned with business growth targets.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="timeline-item reveal">
+                <div class="timeline-date">May 2022 — Jun 2024</div>
+                <div class="timeline-content">
+                    <h3>Customer Success Specialist</h3>
+                    <div class="timeline-company">Linehaul Express / DPD Taiwan — Taipei</div>
+                    <ul class="timeline-description">
+                        <li>Coordinated complex cross-border supply chain operations.</li>
+                        <li>Optimized shipping schedules and routes using predictive analytics.</li>
                     </ul>
                 </div>
             </div>
@@ -257,22 +294,14 @@
         <div class="section-label">03 — Skills</div>
         <div class="skills-marquee-container">
             <div class="skills-marquee">
-                <span class="skill-pill">Python (Pandas/Playwright)</span>
-                <span class="skill-pill">SQL (PostgreSQL)</span>
-                <span class="skill-pill">R Programming</span>
-                <span class="skill-pill">GA4</span>
-                <span class="skill-pill">Streamlit</span>
-                <span class="skill-pill">Python (Pandas/Playwright)</span>
-                <span class="skill-pill">SQL (PostgreSQL)</span>
-                <span class="skill-pill">R Programming</span>
-                <span class="skill-pill">GA4</span>
-                <span class="skill-pill">Streamlit</span>
+                <span class="skill-pill">Python (Pandas/Playwright)</span><span class="skill-pill">SQL (PostgreSQL)</span><span class="skill-pill">R Programming</span><span class="skill-pill">GA4</span><span class="skill-pill">Streamlit</span><span class="skill-pill">AWS</span><span class="skill-pill">GitHub Actions</span><span class="skill-pill">Power BI</span>
+                <span class="skill-pill">Python (Pandas/Playwright)</span><span class="skill-pill">SQL (PostgreSQL)</span><span class="skill-pill">R Programming</span><span class="skill-pill">GA4</span><span class="skill-pill">Streamlit</span><span class="skill-pill">AWS</span><span class="skill-pill">GitHub Actions</span><span class="skill-pill">Power BI</span>
             </div>
         </div>
         <div class="skills-grid">
             <div class="skill-category reveal">
                 <h4>Data & Analytics</h4>
-                <div class="skill-list"><span>Python</span><span>SQL</span><span>R</span></div>
+                <div class="skill-list"><span>Python</span><span>SQL</span><span>R Programming</span></div>
             </div>
             <div class="skill-category reveal">
                 <h4>Visualization</h4>
@@ -294,14 +323,14 @@
                             <div class="mock-stat-card"><div class="mock-stat-label">ENGAGEMENT</div><div class="mock-stat-value">10.8%</div></div>
                         </div>
                         <div class="mock-chart">
-                            <svg viewBox="0 0 100 40"><path d="M0,35 Q10,20 20,30 T40,25 T60,15 T80,28 T100,20" class="chart-path"></path></svg>
+                            <svg viewBox="0 0 100 40" style="width:100%; height:100%;"><path d="M0,35 Q10,20 20,30 T40,25 T60,15 T80,28 T100,20" class="chart-path"></path></svg>
                         </div>
                     </div>
                 </div>
                 <div class="project-content">
                     <div class="project-tag">Data Engineering</div>
                     <h3 class="project-title">PinTrend Analytics Dashboard</h3>
-                    <p class="project-description">ETL pipeline built with Python/Playwright and GitHub Actions for automated Pinterest data collection.</p>
+                    <p class="project-description">End-to-end ETL pipeline built with Python/Playwright to automate Pinterest data collection.</p>
                     <div class="project-tech"><span class="tech-tag">Python</span><span class="tech-tag">GitHub Actions</span><span class="tech-tag">Streamlit</span></div>
                     <div style="margin-top: 1.5rem; display: flex; gap: 1rem;">
                         <a href="https://weiweichiang0813-art.github.io/pinterest-analytics/" target="_blank" class="btn btn-primary" style="padding: 0.8rem 1.5rem;">Launch Dashboard</a>
@@ -314,52 +343,46 @@
     </section>
 
     <section id="contact">
+        <div class="section-label">05 — Contact</div>
         <h1 class="contact-title reveal">Let's <em>connect</em></h1>
+        <p class="contact-subtitle reveal">Open to discussing new opportunities or analytics insights.</p>
         <div class="contact-links reveal">
-            <a href="https://www.linkedin.com/in/weichiang13" target="_blank" class="contact-link">LinkedIn</a>
+            <button class="contact-link" onclick="openEmailModal()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>Email</button>
+            <a href="https://www.linkedin.com/in/weichiang13" target="_blank" class="contact-link"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"></path></svg>LinkedIn</a>
         </div>
     </section>
 
+    <div class="modal-overlay" id="emailModal" onclick="closeEmailModal(event)">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeEmailModal(event)">&times;</button>
+            <div class="modal-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path></svg></div>
+            <h3 class="modal-title">Get in Touch</h3>
+            <p class="modal-email">weiweichiang0813@gmail.com</p>
+            <a href="mailto:weiweichiang0813@gmail.com" class="modal-btn">Send Email</a>
+        </div>
+    </div>
+
     <footer>
         <div class="footer-left">© 2026 Wei Wei Chiang — Toronto, Canada</div>
+        <div class="footer-right"><a href="https://www.linkedin.com/in/weichiang13" target="_blank">LinkedIn</a></div>
     </footer>
 
     <script>
-        const cursor = document.querySelector('.cursor');
-        const cursorDot = document.querySelector('.cursor-dot');
-        document.addEventListener('mousemove', (e) => {
-            cursor.style.left = e.clientX - 10 + 'px';
-            cursor.style.top = e.clientY - 10 + 'px';
-            cursorDot.style.left = e.clientX - 2 + 'px';
-            cursorDot.style.top = e.clientY - 2 + 'px';
-        });
+        // Cursor
+        const cursor = document.querySelector('.cursor'); const cursorDot = document.querySelector('.cursor-dot'); document.addEventListener('mousemove', (e) => { cursor.style.left = e.clientX - 10 + 'px'; cursor.style.top = e.clientY - 10 + 'px'; cursorDot.style.left = e.clientX - 2 + 'px'; cursorDot.style.top = e.clientY - 2 + 'px'; });
 
-        const revealElements = document.querySelectorAll('.reveal');
-        const revealOnScroll = () => {
-            revealElements.forEach(el => {
-                const rect = el.getBoundingClientRect();
-                if (rect.top < window.innerHeight - 80) el.classList.add('active');
-            });
-        };
-        window.addEventListener('scroll', revealOnScroll);
-        window.addEventListener('load', revealOnScroll);
+        // Scroll Reveal
+        const revealOnScroll = () => { document.querySelectorAll('.reveal').forEach(el => { const rect = el.getBoundingClientRect(); if (rect.top < window.innerHeight - 80) el.classList.add('active'); }); }; window.addEventListener('scroll', revealOnScroll); window.addEventListener('load', revealOnScroll);
 
+        // Modal
+        function openEmailModal() { document.getElementById('emailModal').classList.add('active'); }
+        function closeEmailModal(e) { if (e.target.id === 'emailModal' || e.target.className === 'modal-close') document.getElementById('emailModal').classList.remove('active'); }
+
+        // Scraper Log
         const logBody = document.getElementById('scraperLog');
-        const logLines = [
-            '<div class="log-line">&gt; searching target pins: candle_decor...</div>',
-            '<div class="log-line">&gt; [metrics] pin_id: 115982823 - impressions: 45</div>',
-            '<div class="log-line">&gt; saving to google_sheets...</div>',
-            '<div class="log-line">&gt; daily data refresh ready.</div>'
-        ];
-        let lineIndex = 0;
-        function addLogLine() {
-            logBody.innerHTML += logLines[lineIndex];
-            logBody.scrollTop = logBody.scrollHeight;
-            if (logBody.childElementCount > 8) logBody.removeChild(logBody.firstElementChild);
-            lineIndex = (lineIndex + 1) % logLines.length;
-            setTimeout(addLogLine, Math.random() * 2000 + 1000);
-        }
-        setTimeout(addLogLine, 2000);
+        const logLines = ['&gt; initializing...', '&gt; crawling target pins...', '&gt; saving data...', '&gt; sync complete.'];
+        let idx = 0;
+        setInterval(() => { logBody.innerHTML += `<div class="log-line">${logLines[idx]}</div>`; logBody.scrollTop = logBody.scrollHeight; idx = (idx + 1) % logLines.length; if(logBody.childElementCount > 8) logBody.removeChild(logBody.firstElementChild); }, 2000);
     </script>
 </body>
 </html>
