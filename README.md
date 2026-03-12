@@ -1,5 +1,5 @@
 # 🔗 Professional Portfolio — Wei Wei Chiang
-This is the repository for my personal portfolio website, showcasing my work as a Business & Marketing Analyst. The site is designed to bridge the gap between technical data expertise and strategic marketing narratives.
+This is the repository for my personal portfolio website, showcasing my work and project.
 
 🌐 Live Demo: https://weiweichiang0813-art.github.io/profolio/
 
