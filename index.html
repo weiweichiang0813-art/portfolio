@@ -28,35 +28,36 @@
         .view.active { display: block; animation: fadeIn 0.6s ease; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* --- Global Components --- */
+        /* --- Global Background --- */
         .bg-gradient { position: fixed; inset: 0; z-index: -1; }
         .blob { position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.4; animation: blob 20s infinite; }
         .blob-1 { width: 600px; height: 600px; background: var(--accent); top: -200px; right: -100px; }
         @keyframes blob { 0%, 100% { transform: translate(0, 0); } 50% { transform: translate(30px, -30px); } }
 
+        /* --- Navbar --- */
         nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; padding: 1.5rem 3rem; display: flex; justify-content: space-between; align-items: center; background: rgba(255,255,255,0.7); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); }
         .logo { font-family: 'Instrument Serif', serif; font-size: 1.6rem; font-style: italic; background: var(--accent-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; cursor: pointer; text-decoration: none; }
         .nav-links { display: flex; gap: 2rem; list-style: none; }
         .nav-links a { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; text-transform: uppercase; color: var(--text-muted); cursor: pointer; transition: 0.3s; text-decoration: none; }
         .nav-links a:hover, .nav-links a.active { color: var(--accent); }
 
+        /* --- Buttons --- */
         .btn { font-family: 'JetBrains Mono', monospace; padding: 0.8rem 1.8rem; border-radius: 10px; cursor: pointer; text-decoration: none; font-weight: 600; font-size: 0.75rem; transition: 0.3s; display: inline-flex; align-items: center; gap: 0.6rem; border: none; }
         .btn-primary { background: var(--accent-gradient); color: white; }
         .btn-secondary { background: white; border: 1px solid var(--border); color: var(--text); }
         .back-home { margin-top: 5rem; display: flex; justify-content: center; }
 
+        /* --- Section Labels --- */
         .section-label { font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; color: var(--accent); margin-bottom: 1rem; display: flex; align-items: center; gap: 1rem; text-transform: uppercase; letter-spacing: 0.1em; }
         .section-label::before { content: ''; width: 25px; height: 1px; background: var(--accent); }
         .section-title { font-family: 'Instrument Serif', serif; font-size: clamp(2.5rem, 5vw, 3.5rem); margin-bottom: 2rem; font-weight: 400; }
         .section-title em { font-style: italic; color: var(--accent); }
 
         /* =========================================
-           HOME PAGE STYLES (Landing Style)
+           HOME PAGE STYLES
            ========================================= */
         .home-section { padding: 8rem 6rem; border-bottom: 1px solid var(--border); max-width: 1300px; margin: 0 auto; }
         .hero-wrap { height: 100vh; display: grid; grid-template-columns: 1fr 1fr; align-items: center; }
-        
-        /* Home Cards */
         .preview-card { background: white; border: 1px solid var(--border); padding: 3rem; border-radius: 24px; display: grid; grid-template-columns: 1fr 250px; gap: 2rem; align-items: center; transition: 0.3s; }
         .preview-card:hover { transform: translateY(-5px); border-color: var(--accent); box-shadow: 0 20px 40px var(--shadow); }
 
@@ -64,7 +65,7 @@
         .scraper-window { background: #1E293B; border-radius: 16px; padding: 1.5rem; color: white; font-family: 'JetBrains Mono'; font-size: 0.7rem; box-shadow: 0 20px 40px rgba(0,0,0,0.2); }
         .log-line { margin-bottom: 0.4rem; }
 
-        /* Skills Marquee (Home Only) */
+        /* Skills Marquee */
         .marquee-hub { overflow: hidden; padding: 2rem 0; mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent); }
         .marquee-inner { display: flex; gap: 1.5rem; animation: scroll 30s linear infinite; width: max-content; }
         @keyframes scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
@@ -74,31 +75,27 @@
            DETAILED PAGE STYLES
            ========================================= */
         .detail-container { max-width: 1000px; margin: 0 auto; padding: 10rem 2rem 5rem; }
-
-        /* Experience Detail */
         .timeline-box { border-left: 1px solid var(--border); padding-left: 3rem; position: relative; }
         .timeline-item { position: relative; margin-bottom: 5rem; }
         .timeline-item::before { content: ''; position: absolute; left: -3.35rem; top: 0.5rem; width: 10px; height: 10px; background: var(--accent); border-radius: 50%; outline: 4px solid var(--bg); }
         .time-tag { font-family: 'JetBrains Mono'; font-size: 0.75rem; color: var(--accent); margin-bottom: 0.5rem; }
 
-        /* Skills Categories Detail */
+        /* Skills Detail Grid */
         .skills-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; }
         .skill-cat { background: white; padding: 2.5rem; border-radius: 20px; border: 1px solid var(--border); }
-        .skill-cat h4 { margin-bottom: 1.5rem; font-family: 'Instrument Serif'; font-size: 1.5rem; border-bottom: 1px solid var(--border); padding-bottom: 1rem; }
-        .skill-list { list-style: none; display: flex; flex-wrap: wrap; gap: 0.5rem; }
         .tag-small { font-size: 0.7rem; background: var(--bg-subtle); border: 1px solid var(--border); padding: 0.4rem 0.8rem; border-radius: 6px; font-family: 'JetBrains Mono'; }
 
-        /* Project Dashboard Showcase Detail */
+        /* Dashboard Look */
         .dashboard-full { background: white; border: 1px solid var(--border); border-radius: 24px; padding: 2rem; margin-top: 2rem; }
-        .db-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); padding-bottom: 1.5rem; margin-bottom: 2rem; }
-        .db-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-bottom: 2rem; }
-        .db-card { background: var(--bg); padding: 1.5rem; border-radius: 12px; border: 1px solid var(--border); }
+        .db-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-bottom: 2rem; }
+        .db-card { background: var(--bg); padding: 1.5rem; border-radius: 12px; border: 1px solid var(--border); text-align: center; }
         .db-val { font-family: 'Instrument Serif'; font-size: 2rem; color: var(--pin-red); }
-        .db-label { font-size: 0.6rem; color: var(--text-muted); text-transform: uppercase; }
-        .db-viz { height: 300px; background: #fdfdfd; border-radius: 12px; border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
-        .chart-mock { stroke: var(--pin-red); stroke-width: 3; fill: none; }
 
-        .coming-soon { text-align: center; padding: 5rem; border: 2px dashed var(--border); border-radius: 24px; margin-top: 3rem; color: var(--text-muted); }
+        /* Contact Section Styles */
+        .contact-wrap { text-align: center; padding: 8rem 2rem; }
+        .contact-links { display: flex; justify-content: center; gap: 1.5rem; margin-top: 3rem; }
+        .icon-btn { width: 60px; height: 60px; background: white; border: 1px solid var(--border); border-radius: 16px; display: flex; align-items: center; justify-content: center; color: var(--text); transition: 0.3s; cursor: pointer; text-decoration: none; }
+        .icon-btn:hover { border-color: var(--accent); transform: translateY(-5px); color: var(--accent); box-shadow: 0 10px 20px var(--shadow); }
     </style>
 </head>
 <body>
@@ -108,10 +105,10 @@
     <nav>
         <div class="logo" onclick="showView('home')">Wei Wei</div>
         <ul class="nav-links">
-            <li><a onclick="showView('home-about')">About</a></li>
-            <li><a onclick="showView('home-exp')">Experience</a></li>
-            <li><a onclick="showView('home-skills')">Skills</a></li>
-            <li><a onclick="showView('home-projects')">Projects</a></li>
+            <li><a onclick="showView('detailed-about')">About</a></li>
+            <li><a onclick="showView('detailed-experience')">Experience</a></li>
+            <li><a onclick="showView('detailed-skills')">Skills</a></li>
+            <li><a onclick="showView('detailed-projects')">Projects</a></li>
             <li><a onclick="showView('detailed-contact')">Contact</a></li>
         </ul>
     </nav>
@@ -123,7 +120,7 @@
                 <h1 class="section-title">Turning <span><em>data</em> into</span> decisions.</h1>
                 <p class="hero-description" style="max-width: 480px; margin-bottom: 2.5rem; color: var(--text-muted);">Bridging marketing strategy and technical engineering to create measurable impact.</p>
                 <div class="hero-cta">
-                    <button onclick="showView('detailed-projects')" class="btn btn-primary">Featured Work</button>
+                    <button onclick="showView('detailed-projects')" class="btn btn-primary">Flagship Dashboard</button>
                     <button onclick="showView('detailed-contact')" class="btn btn-secondary">Get in Touch</button>
                 </div>
             </div>
@@ -135,7 +132,7 @@
                     </div>
                     <div id="scraperLog">
                         <div class="log-line">&gt; init playwright...</div>
-                        <div class="log-line" style="color:#10B981">&gt; session: authenticated</div>
+                        <div class="log-line" style="color:#10B981">&gt; authenticated: success</div>
                     </div>
                 </div>
             </div>
@@ -145,13 +142,13 @@
             <div class="section-label">01 — Profile</div>
             <div class="preview-card">
                 <div>
-                    <h2 class="section-title" style="font-size: 2.5rem; margin-bottom:1rem;">Business Insight & Analytics</h2>
-                    <p style="color: var(--text-muted); margin-bottom: 2rem;">Postgraduate student at Humber College focusing on predictive modeling and visualization.</p>
-                    <button onclick="showView('detailed-about')" class="btn btn-secondary">Read Full Bio</button>
+                    <h2 class="section-title" style="font-size: 2.2rem; margin-bottom:1rem;">Analytics Background</h2>
+                    <p style="color: var(--text-muted); margin-bottom: 2rem;">Postgraduate student specializing in Business Insights and Analytics at Humber College.</p>
+                    <button onclick="showView('detailed-about')" class="btn btn-secondary">Read Detailed Bio</button>
                 </div>
                 <div style="text-align:right;">
-                    <div style="font-size: 4rem; font-family:'Instrument Serif'; line-height:1;">3+</div>
-                    <div style="font-size: 0.7rem; color:var(--accent);">YEARS EXPERIENCE</div>
+                    <div style="font-size: 3.5rem; font-family:'Instrument Serif'; line-height:1;">3+</div>
+                    <div style="font-size: 0.6rem; color:var(--accent);">YEARS EXPERIENCE</div>
                 </div>
             </div>
         </section>
@@ -160,25 +157,25 @@
             <div class="section-label">02 — Career</div>
             <div class="preview-card">
                 <div>
-                    <h2 class="section-title" style="font-size: 2.5rem; margin-bottom:1rem;">Professional Journey</h2>
-                    <p style="color: var(--text-muted); margin-bottom: 2rem;">From supply chain coordination to digital marketing analytics coordinator.</p>
-                    <button onclick="showView('detailed-experience')" class="btn btn-secondary">View Timeline</button>
+                    <h2 class="section-title" style="font-size: 2.2rem; margin-bottom:1rem;">The Journey</h2>
+                    <p style="color: var(--text-muted); margin-bottom: 2rem;">Supply chain management & digital marketing analytics coordinator experience.</p>
+                    <button onclick="showView('detailed-experience')" class="btn btn-secondary">Full Career Path</button>
                 </div>
-                <div style="opacity:0.3; font-size:5rem; font-family:'Instrument Serif';">💼</div>
+                <div style="font-size:5rem; text-align:right; opacity:0.2;">💼</div>
             </div>
         </section>
 
         <section id="home-skills" class="home-section">
             <div class="section-label">03 — Toolkit</div>
-            <h2 class="section-title" style="font-size: 2.5rem; margin-bottom:2rem;">Core Tech Stack</h2>
+            <h2 class="section-title" style="font-size: 2.2rem; margin-bottom:2rem;">Core Tech Stack</h2>
             <div class="marquee-hub">
                 <div class="marquee-inner">
-                    <span class="pill">Python</span><span class="pill">SQL</span><span class="pill">R</span><span class="pill">GA4</span><span class="pill">Power BI</span><span class="pill">AWS</span><span class="pill">SEO</span><span class="pill">Tableau</span>
-                    <span class="pill">Python</span><span class="pill">SQL</span><span class="pill">R</span><span class="pill">GA4</span><span class="pill">Power BI</span><span class="pill">AWS</span><span class="pill">SEO</span><span class="pill">Tableau</span>
+                    <span class="pill">Python</span><span class="pill">SQL</span><span class="pill">GA4</span><span class="pill">Power BI</span><span class="pill">Playwright</span><span class="pill">AWS</span><span class="pill">SEO</span>
+                    <span class="pill">Python</span><span class="pill">SQL</span><span class="pill">GA4</span><span class="pill">Power BI</span><span class="pill">Playwright</span><span class="pill">AWS</span><span class="pill">SEO</span>
                 </div>
             </div>
             <div style="text-align:center; margin-top:2rem;">
-                <button onclick="showView('detailed-skills')" class="btn btn-secondary">Detailed Skills Breakdown</button>
+                <button onclick="showView('detailed-skills')" class="btn btn-secondary">Skill Categories</button>
             </div>
         </section>
 
@@ -186,34 +183,44 @@
             <div class="section-label">04 — Selected Work</div>
             <div class="preview-card" style="background: var(--text); color:white; border:none;">
                 <div>
-                    <h2 class="section-title" style="font-size: 2.5rem; margin-bottom:1rem; color:white;">PinTrend Analytics</h2>
-                    <p style="color: #94A3B8; margin-bottom: 2rem;">Automated ETL pipeline bypassing API limits for internal business intelligence.</p>
-                    <button onclick="showView('detailed-projects')" class="btn btn-primary" style="background:white; color:var(--text);">View Dashboard</button>
+                    <h2 class="section-title" style="font-size: 2.2rem; margin-bottom:1rem; color:white;">PinTrend Analytics</h2>
+                    <p style="color: #94A3B8; margin-bottom: 2rem;">ETL pipeline extracting Pinterest metrics for real-time reporting.</p>
+                    <button onclick="showView('detailed-projects')" class="btn btn-primary" style="background:white; color:var(--text);">Showcase Tool</button>
                 </div>
-                <div style="font-size: 4rem; color: var(--pin-red);">📊</div>
+                <div style="font-size: 4rem; color: var(--pin-red); text-align:right;">📊</div>
             </div>
         </section>
 
-        <footer style="padding: 5rem; text-align:center; color:var(--text-muted); font-size:0.7rem;">
-            © 2026 WEI WEI CHIANG — TORONTO
+        <section id="home-contact" class="home-section contact-wrap">
+            <div class="section-label">05 — Connect</div>
+            <h1 class="section-title">Let's <em>Collaborate & Chat</em></h1>
+            <p style="color:var(--text-muted); max-width:550px; margin: 0 auto;">Open for data analyst roles, project collaborations, or simply connecting to chat about analytics insights.</p>
+            <div class="contact-links">
+                <a href="mailto:weiweichiang0813@gmail.com" class="icon-btn" title="Email"><svg viewBox="0 0 24 24" width="24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg></a>
+                <a href="https://www.linkedin.com/in/weichiang13" target="_blank" class="icon-btn" title="LinkedIn"><svg viewBox="0 0 24 24" width="24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></a>
+                <a href="https://github.com/weiweichiang0813-art" target="_blank" class="icon-btn" title="GitHub"><svg viewBox="0 0 24 24" width="24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.041-1.472-4.041-1.472-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></a>
+            </div>
+        </section>
+
+        <footer style="padding-bottom: 5rem; text-align:center; color:var(--text-muted); font-size:0.7rem;">
+            © 2026 WEI WEI CHIANG — TORONTO, CANADA
         </footer>
     </main>
 
     <section id="detailed-about" class="view">
         <div class="detail-container">
-            <div class="section-label">Detailed Bio</div>
+            <div class="section-label">Detailed Profile</div>
             <h2 class="section-title">Passion for <em>Storytelling</em> through Data</h2>
             <div style="display:grid; grid-template-columns:1.5fr 1fr; gap:4rem;">
                 <div style="font-size:1.1rem; line-height:2; color:var(--text-muted);">
-                    <p class="linkedin-bio" style="color:var(--text); font-weight:500;">Result-oriented Business Analyst with a strong background in marketing analytics and data automation.</p>
+                    <p style="color:var(--text); font-weight:500;">Result-oriented Business Analyst with a strong background in marketing analytics and data automation.</p>
                     <br>
-                    <p>I specialize in bridging the gap between technical data engineering and strategic marketing decisions. My journey began in International Business, where I learned the value of operational efficiency. Today, I build Python-based tools that automate the "boring stuff," allowing teams to focus on growth.</p>
+                    <p>I specialize in bridging the gap between technical data engineering and strategic marketing decisions. My focus is on automating reporting pipelines using Python and creating intuitive dashboards that empower teams to make better decisions.</p>
                 </div>
-                <div style="background:var(--bg-subtle); padding:2rem; border-radius:20px;">
-                    <h4 style="margin-bottom:1rem;">Academic Base</h4>
-                    <p style="font-size:0.85rem;">Humber Polytechnic, Canada<br>Post-grad in Business Insights</p>
-                    <hr style="margin:1.5rem 0; opacity:0.1;">
-                    <p style="font-size:0.85rem;">Ming Chuan University<br>BBA in International Business</p>
+                <div style="background:var(--bg-subtle); padding:2.5rem; border-radius:24px; border: 1px solid var(--border);">
+                    <h4 style="margin-bottom:1rem; font-weight:700;">Education</h4>
+                    <p style="font-size:0.85rem; margin-bottom:1rem;"><strong>Humber Polytechnic, Canada</strong><br>Business Insights & Analytics</p>
+                    <p style="font-size:0.85rem;"><strong>Ming Chuan University</strong><br>BBA in International Business</p>
                 </div>
             </div>
             <div class="back-home"><button onclick="showView('home')" class="btn btn-secondary">← Back to Overview</button></div>
@@ -222,35 +229,26 @@
 
     <section id="detailed-experience" class="view">
         <div class="detail-container">
-            <div class="section-label">Career Timeline</div>
+            <div class="section-label">Experience Detail</div>
             <h2 class="section-title">Professional <em>Milestones</em></h2>
             <div class="timeline-box">
                 <div class="timeline-item">
-                    <div class="time-tag">JAN 2026 — APR 2026</div>
-                    <div class="timeline-company">Digital Marketing & Analytics Coordinator</div>
-                    <div style="font-size:0.9rem; color:var(--accent); margin-bottom:1rem;">Terradomi Candle Co. — Ontario</div>
+                    <div class="time-tag">JAN 2026 — PRESENT</div>
+                    <div style="font-weight:700; font-size:1.4rem;">Digital Marketing & Analytics Coordinator</div>
+                    <div style="color:var(--accent); margin-bottom:1rem;">Terradomi Candle Co. — Ontario</div>
                     <ul class="timeline-description">
                         <li>Automated daily Pinterest reporting with Playwright scraper.</li>
-                        <li>Built GA4 dashboards to monitor campaign ROAS and traffic quality.</li>
-                        <li>Implemented technical SEO fixes to boost organic search rankings.</li>
+                        <li>Built GA4 tracking to optimize campaign spend.</li>
+                        <li>Technical SEO implementation for organic growth.</li>
                     </ul>
                 </div>
                 <div class="timeline-item">
                     <div class="time-tag">MAY 2022 — JUN 2024</div>
-                    <div class="timeline-company">Customer Success Specialist</div>
-                    <div style="font-size:0.9rem; color:var(--accent); margin-bottom:1rem;">Linehaul Express / DPD — Taipei</div>
+                    <div style="font-weight:700; font-size:1.4rem;">Customer Success Specialist</div>
+                    <div style="color:var(--accent); margin-bottom:1rem;">Linehaul Express / DPD Taiwan</div>
                     <ul class="timeline-description">
-                        <li>Managed cross-border supply chain operations for major accounts.</li>
-                        <li>Reduced shipping delays by 15% through predictive route analysis.</li>
-                    </ul>
-                </div>
-                <div class="timeline-item">
-                    <div class="time-tag">JUN 2021 — AUG 2021</div>
-                    <div class="timeline-company">Brand Marketing Intern</div>
-                    <div style="font-size:0.9rem; color:var(--accent); margin-bottom:1rem;">Diamond VDM International — Taipei</div>
-                    <ul class="timeline-description">
-                        <li>Analyzed market media data to identify trend-setting creatives.</li>
-                        <li>Supported social media engagement reporting.</li>
+                        <li>Optimized delivery schedules through route analytics.</li>
+                        <li>Managed cross-border logistics for Amazon fulfillment.</li>
                     </ul>
                 </div>
             </div>
@@ -260,31 +258,31 @@
 
     <section id="detailed-skills" class="view">
         <div class="detail-container">
-            <div class="section-label">Categorized Skills</div>
-            <h2 class="section-title">My <em>Expertise</em></h2>
+            <div class="section-label">Skills Breakdown</div>
+            <h2 class="section-title">My Technical <em>Expertise</em></h2>
             <div class="skills-grid">
                 <div class="skill-cat">
-                    <h4>Data & Analytics</h4>
+                    <h4>Data Science</h4>
                     <div class="skill-list">
-                        <span class="tag-small">Python</span><span class="tag-small">SQL</span><span class="tag-small">R</span><span class="tag-small">Excel VBA</span><span class="tag-small">ETL</span>
+                        <span class="tag-small">Python</span><span class="tag-small">SQL</span><span class="tag-small">R</span><span class="tag-small">Excel VBA</span>
                     </div>
                 </div>
                 <div class="skill-cat">
                     <h4>Visualization</h4>
                     <div class="skill-list">
-                        <span class="tag-small">Power BI</span><span class="tag-small">Streamlit</span><span class="tag-small">Grafana</span><span class="tag-small">Looker Studio</span>
+                        <span class="tag-small">Power BI</span><span class="tag-small">Streamlit</span><span class="tag-small">Grafana</span>
                     </div>
                 </div>
                 <div class="skill-cat">
                     <h4>Engineering</h4>
                     <div class="skill-list">
-                        <span class="tag-small">Playwright</span><span class="tag-small">GitHub Actions</span><span class="tag-small">AWS S3</span><span class="tag-small">Cloud Cron</span>
+                        <span class="tag-small">Playwright</span><span class="tag-small">GitHub Actions</span><span class="tag-small">ETL</span>
                     </div>
                 </div>
                 <div class="skill-cat">
                     <h4>Marketing Tech</h4>
                     <div class="skill-list">
-                        <span class="tag-small">GA4</span><span class="tag-small">GTM</span><span class="tag-small">SEO Analytics</span><span class="tag-small">CRM</span>
+                        <span class="tag-small">GA4</span><span class="tag-small">GTM</span><span class="tag-small">Technical SEO</span>
                     </div>
                 </div>
             </div>
@@ -294,35 +292,29 @@
 
     <section id="detailed-projects" class="view">
         <div class="detail-container">
-            <div class="section-label">Flagship Project</div>
+            <div class="section-label">Featured Projects</div>
             <h2 class="section-title">PinTrend <em>Analytics</em> Dashboard</h2>
-            <p style="color:var(--text-muted); max-width:700px;">A custom-built solution for Pinterest marketing tracking. This tool automates the extraction of public and private metrics, bypassing official API constraints to provide daily growth insights.</p>
+            <p style="color:var(--text-muted); margin-bottom:2rem;">A custom-built data solution automating the extraction of Pinterest marketing metrics, providing daily intelligence without API barriers.</p>
             
             <div class="dashboard-full">
-                <div class="db-header">
-                    <div class="mock-logo">PinTrend.v5</div>
-                    <div style="font-family:'JetBrains Mono'; font-size:0.7rem; color:var(--text-subtle);">STATUS: LIVE | SYNC: 2026-03-12</div>
-                </div>
                 <div class="db-grid">
-                    <div class="db-card"><div class="db-label">Impressions</div><div class="db-val">474.2k</div></div>
-                    <div class="db-card"><div class="db-label">Pin Clicks</div><div class="db-val">12.5k</div></div>
-                    <div class="db-card"><div class="db-label">Engagement</div><div class="db-val">10.8%</div></div>
-                    <div class="db-card"><div class="db-label">Top Trend</div><div class="db-val" style="font-size:1.2rem;">Cozy Decor</div></div>
+                    <div class="db-card"><div class="db-val">474.2k</div><div style="font-size:0.6rem;">Impressions</div></div>
+                    <div class="db-card"><div class="db-val">12.5k</div><div style="font-size:0.6rem;">Pin Clicks</div></div>
+                    <div class="db-card"><div class="db-val">10.8%</div><div style="font-size:0.6rem;">Engagement</div></div>
                 </div>
-                <div class="db-viz">
-                    <svg viewBox="0 0 500 150" style="width:100%; height:100%;">
-                        <path d="M0,120 Q50,80 100,100 T200,60 T300,90 T400,40 T500,70" class="chart-mock"></path>
+                <div style="height:250px; background:var(--bg-subtle); border-radius:12px; display:flex; align-items:center; justify-content:center; border: 1px solid var(--border); position:relative;">
+                    <svg viewBox="0 0 500 100" style="width:80%; height:auto;">
+                        <path d="M0,80 Q50,30 100,50 T200,40 T300,70 T400,20 T500,50" stroke="var(--pin-red)" stroke-width="3" fill="none"></path>
                     </svg>
                     <div style="position:absolute; bottom:1rem; right:1rem;">
-                        <a href="https://weiweichiang0813-art.github.io/pinterest-analytics/" target="_blank" class="btn btn-primary" style="font-size:0.6rem;">Launch Live Tool</a>
+                        <a href="https://weiweichiang0813-art.github.io/pinterest-analytics/" target="_blank" class="btn btn-primary" style="font-size:0.6rem;">Launch Live Dashboard</a>
                     </div>
                 </div>
             </div>
 
-            <div class="coming-soon">
+            <div style="text-align:center; padding: 4rem; border: 2px dashed var(--border); border-radius:24px; margin-top:3rem; color:var(--text-muted);">
                 <div style="font-size:2rem; margin-bottom:1rem;">🚀</div>
-                <h3 style="font-family:'Instrument Serif'; font-size:1.8rem;">More Projects Coming Soon</h3>
-                <p>Stay tuned for upcoming case studies in Supply Chain Optimization and GA4 Data Warehousing.</p>
+                <h3>More Analytics Projects Coming Soon</h3>
             </div>
             
             <div class="back-home"><button onclick="showView('home')" class="btn btn-secondary">← Back to Overview</button></div>
@@ -332,10 +324,10 @@
     <section id="detailed-contact" class="view">
         <div class="detail-container" style="text-align:center;">
             <div class="section-label">Connect</div>
-            <h1 class="section-title">Let's <em>Collaborate & Chat</em></h1>
-            <p style="color:var(--text-muted); margin-bottom:3rem;">Open for data analyst roles, project collaborations, or just talking shop about insights.</p>
+            <h1 class="section-title">Let's <em>Connect & Chat</em></h1>
+            <p style="color:var(--text-muted); margin-bottom:3rem;">Looking for a Business Analyst who can code? Let's discuss your next project.</p>
             <div class="contact-links">
-                <a onclick="alert('weiweichiang0813@gmail.com')" class="icon-btn" title="Email"><svg viewBox="0 0 24 24" width="24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg></a>
+                <a href="mailto:weiweichiang0813@gmail.com" class="icon-btn"><svg viewBox="0 0 24 24" width="24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg></a>
                 <a href="https://www.linkedin.com/in/weichiang13" target="_blank" class="icon-btn"><svg viewBox="0 0 24 24" width="24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></a>
                 <a href="https://github.com/weiweichiang0813-art" target="_blank" class="icon-btn"><svg viewBox="0 0 24 24" width="24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.041-1.472-4.041-1.472-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></a>
             </div>
@@ -344,40 +336,42 @@
     </section>
 
     <script>
-        // Router System
+        // 核心切換邏輯
         function showView(viewId) {
-            // Check if user is clicking a home section (scroll logic)
-            if(viewId.startsWith('home-')) {
-                // If not currently in home, switch to home first
-                if(!document.getElementById('home').classList.contains('active')) {
-                    showView('home');
-                }
-                // Smooth scroll to the target section in home
-                const target = document.getElementById(viewId);
-                if(target) target.scrollIntoView({ behavior: 'smooth' });
-                return;
-            }
-
-            // Standard View Switching
+            // 切換視圖
             document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
-            document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
-            
             const targetView = document.getElementById(viewId);
             if(targetView) {
                 targetView.classList.add('active');
-                window.scrollTo(0, 0);
+                window.scrollTo(0, 0); // 每次切換回到頂部
             }
+
+            // 同步 Navbar Active 狀態
+            document.querySelectorAll('.nav-links a').forEach(a => {
+                a.classList.remove('active');
+                // 檢查 viewId 是否包含 nav 的關鍵字
+                if(viewId.includes(a.textContent.toLowerCase())) {
+                    a.classList.add('active');
+                }
+            });
         }
 
-        // Fake Scraper Log
+        // 模擬 Scraper Log
         const logBody = document.getElementById('scraperLog');
-        const logs = ['> fetching kpis...', '> updating sheets...', '> Viz ready.', '> crawling pins...'];
-        let lIdx = 0;
+        const logs = ['> fetching data...', '> updating sheets...', '> analytics: success', '> crawling pins...'];
+        let idx = 0;
         setInterval(() => {
-            logBody.innerHTML += `<div class="log-line">${logs[lIdx]}</div>`;
-            lIdx = (lIdx + 1) % logs.length;
+            logBody.innerHTML += `<div class="log-line">${logs[idx]}</div>`;
+            idx = (idx + 1) % logs.length;
             if(logBody.childElementCount > 6) logBody.removeChild(logBody.firstElementChild);
         }, 3000);
+
+        // 游標邏輯
+        const cursor = document.querySelector('.cursor'); const cursorDot = document.querySelector('.cursor-dot');
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX - 10 + 'px'; cursor.style.top = e.clientY - 10 + 'px';
+            cursorDot.style.left = e.clientX - 2 + 'px'; cursorDot.style.top = e.clientY - 2 + 'px';
+        });
     </script>
 </body>
 </html>
