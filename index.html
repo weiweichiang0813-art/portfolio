@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Winnie's Protfolio</title>
+    <title>Winnie's Portfolio</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -25,9 +25,9 @@
             --shadow: rgba(14, 165, 233, 0.08);
             --shadow-lg: rgba(14, 165, 233, 0.15);
             --pin-red: #BD081C;
+            --food-orange: #F97316;
         }
 
-        /* Basic Setup */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
         body {
@@ -40,171 +40,484 @@
         }
         ::selection { background: var(--accent); color: white; }
 
-        /* --- Background Decoration --- */
+        /* Background */
         .bg-gradient { position: fixed; inset: 0; pointer-events: none; z-index: -1; overflow: hidden; }
         .blob { position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.5; animation: blobFloat 20s ease-in-out infinite; }
         .blob-1 { width: 600px; height: 600px; background: linear-gradient(135deg, rgba(14, 165, 233, 0.3), rgba(6, 182, 212, 0.2)); top: -200px; right: -100px; }
         .blob-2 { width: 500px; height: 500px; background: linear-gradient(135deg, rgba(6, 182, 212, 0.25), rgba(14, 165, 233, 0.15)); bottom: -150px; left: -100px; animation-delay: -7s; }
         @keyframes blobFloat { 0%, 100% { transform: translate(0, 0) scale(1); } 33% { transform: translate(30px, -30px) scale(1.05); } 66% { transform: translate(-20px, 20px) scale(0.95); } }
 
-        /* --- Cursor --- */
-        .cursor { width: 20px; height: 20px; border: 1.5px solid var(--accent); border-radius: 50%; position: fixed; pointer-events: none; z-index: 9999; transition: transform 0.15s ease; }
-        .cursor-dot { width: 4px; height: 4px; background: var(--accent); border-radius: 50%; position: fixed; pointer-events: none; z-index: 9999; }
-
-        /* --- Navigation --- */
-        nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 1.25rem 3rem; display: flex; justify-content: space-between; align-items: center; background: rgba(248, 250, 252, 0.8); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border-light); }
-        .logo { font-family: 'Instrument Serif', serif; font-size: 1.5rem; font-style: italic; background: var(--accent-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; cursor: pointer; text-decoration: none; }
+        /* Navigation */
+        nav { 
+            position: fixed; top: 0; left: 0; right: 0; z-index: 100; 
+            padding: 1.25rem 3rem; 
+            display: flex; justify-content: space-between; align-items: center; 
+            background: rgba(248, 250, 252, 0.8); 
+            backdrop-filter: blur(20px); 
+            border-bottom: 1px solid var(--border-light); 
+        }
+        .logo { 
+            font-family: 'Instrument Serif', serif; 
+            font-size: 1.5rem; 
+            font-style: italic; 
+            background: var(--accent-gradient); 
+            -webkit-background-clip: text; 
+            -webkit-text-fill-color: transparent; 
+            cursor: pointer; 
+            text-decoration: none; 
+        }
         .nav-links { display: flex; gap: 2rem; list-style: none; }
-        .nav-links a { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; text-transform: uppercase; color: var(--text-muted); cursor: pointer; text-decoration: none; transition: 0.3s; position: relative; padding: 0.5rem 0; }
+        .nav-links a { 
+            font-family: 'JetBrains Mono', monospace; 
+            font-size: 0.75rem; 
+            text-transform: uppercase; 
+            color: var(--text-muted); 
+            cursor: pointer; 
+            text-decoration: none; 
+            transition: 0.3s; 
+            position: relative; 
+            padding: 0.5rem 0; 
+        }
         .nav-links a:hover { color: var(--accent); }
         .nav-links a.active { color: var(--text); font-weight: 600; }
-        .nav-links a.active::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 2px; background: var(--accent); border-radius: 2px; }
+        .nav-links a.active::after { 
+            content: ''; position: absolute; bottom: 0; left: 0; 
+            width: 100%; height: 2px; 
+            background: var(--accent); border-radius: 2px; 
+        }
 
-        /* --- Global Components --- */
-        .section-label { font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; color: var(--accent); margin-bottom: 1rem; display: flex; align-items: center; gap: 1rem; text-transform: uppercase; letter-spacing: 0.1em; }
+        /* Mobile Nav Toggle */
+        .nav-toggle { display: none; background: none; border: none; cursor: pointer; padding: 0.5rem; }
+        .nav-toggle span { display: block; width: 24px; height: 2px; background: var(--text); margin: 5px 0; transition: 0.3s; }
+
+        /* Global Components */
+        .section-label { 
+            font-family: 'JetBrains Mono', monospace; 
+            font-size: 0.65rem; 
+            color: var(--accent); 
+            margin-bottom: 1rem; 
+            display: flex; align-items: center; gap: 1rem; 
+            text-transform: uppercase; 
+            letter-spacing: 0.1em; 
+        }
         .section-label::before { content: ''; width: 25px; height: 1px; background: var(--accent); }
-        .section-title { font-family: 'Instrument Serif', serif; font-size: clamp(2.5rem, 5vw, 3.5rem); margin-bottom: 2rem; font-weight: 400; line-height: 1.1; }
+        
+        .section-title { 
+            font-family: 'Instrument Serif', serif; 
+            font-size: clamp(2rem, 5vw, 3.5rem); 
+            margin-bottom: 2rem; 
+            font-weight: 400; 
+            line-height: 1.1; 
+            color: var(--text);
+        }
         .section-title em { font-style: italic; color: var(--accent); }
 
-        .btn { font-family: 'JetBrains Mono', monospace; padding: 0.8rem 1.8rem; border-radius: 10px; cursor: pointer; text-decoration: none; font-weight: 600; font-size: 0.75rem; transition: 0.3s ease; display: inline-flex; align-items: center; gap: 0.6rem; border: none; }
-        .btn-primary { background: var(--accent-gradient); color: white; box-shadow: 0 4px 15px var(--shadow); }
+        .btn { 
+            font-family: 'JetBrains Mono', monospace; 
+            padding: 0.8rem 1.8rem; 
+            border-radius: 10px; 
+            cursor: pointer; 
+            text-decoration: none; 
+            font-weight: 600; 
+            font-size: 0.75rem; 
+            transition: 0.3s ease; 
+            display: inline-flex; align-items: center; gap: 0.6rem; 
+            border: none; 
+        }
+        .btn-primary { 
+            background: var(--accent-gradient); 
+            color: white; 
+            box-shadow: 0 4px 15px var(--shadow); 
+        }
         .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 8px 30px var(--shadow-lg); }
         .btn-secondary { background: white; color: var(--text); border: 1px solid var(--border); }
         .btn-secondary:hover { border-color: var(--accent); background: var(--accent-dim); }
 
-        /* Let's Connect Section Icon Buttons */
-        .contact-links { display: flex; justify-content: center; gap: 1.5rem; margin-top: 3rem; }
-        .icon-btn { width: 60px; height: 60px; background: white; border: 1px solid var(--border); border-radius: 16px; display: flex; align-items: center; justify-content: center; color: var(--text); transition: 0.3s ease; cursor: pointer; text-decoration: none; position: relative; }
-        .icon-btn:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-5px); box-shadow: 0 10px 20px var(--shadow); }
-        .icon-btn svg { width: 26px; height: 26px; fill: currentColor; }
+        /* Contact Links - Fixed visibility */
+        .contact-links { display: flex; justify-content: center; gap: 1.5rem; margin-top: 2rem; }
+        .icon-btn { 
+            width: 56px; height: 56px; 
+            background: white; 
+            border: 1px solid var(--border); 
+            border-radius: 16px; 
+            display: flex; align-items: center; justify-content: center; 
+            color: var(--text); 
+            transition: 0.3s ease; 
+            cursor: pointer; 
+            text-decoration: none; 
+        }
+        .icon-btn:hover { 
+            border-color: var(--accent); 
+            color: var(--accent); 
+            transform: translateY(-5px); 
+            box-shadow: 0 10px 20px var(--shadow); 
+        }
+        .icon-btn svg { width: 24px; height: 24px; }
 
-        /* --- Page Router Views --- */
+        /* Page Views */
         .view { display: none; min-height: 100vh; position: relative; overflow-x: hidden; }
         .view.active { display: block; animation: viewFadeIn 0.8s ease-out; }
         @keyframes viewFadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* =========================================
-           HOME PAGE (Overview)
-           ========================================= */
-        .home-section { padding: 8rem 6rem; border-bottom: 1px solid var(--border-light); max-width: 1400px; margin: 0 auto; }
-        .hero-wrap { height: 100vh; display: grid; grid-template-columns: 1fr 1.1fr; align-items: center; padding: 0 6rem; position: relative; }
-        .hero-title { font-size: clamp(3rem, 8vw, 5rem); margin-bottom: 1.5rem; }
-        .hero-description { font-size: 1.1rem; color: var(--text-muted); max-width: 480px; margin-bottom: 2.5rem; line-height: 1.8; }
-        .hero-cta { display: flex; gap: 1rem; }
-
-        .hero-right { display: flex; justify-content: flex-end; align-items: center; }
+        /* HOME PAGE */
+        .home-section { 
+            padding: 6rem 4rem; 
+            border-bottom: 1px solid var(--border-light); 
+            max-width: 1400px; 
+            margin: 0 auto; 
+        }
         
-        /* ✅ REMOVED: Floating Skill Labels (analytics/toronto...) - Visual simplification */
+        .hero-wrap { 
+            min-height: 100vh; 
+            display: grid; 
+            grid-template-columns: 1fr 1fr; 
+            align-items: center; 
+            padding: 0 4rem; 
+            gap: 3rem;
+        }
+        
+        .hero-title { 
+            font-family: 'Instrument Serif', serif;
+            font-size: clamp(2.5rem, 6vw, 4.5rem); 
+            margin-bottom: 1.5rem; 
+            font-weight: 400;
+            line-height: 1.1;
+            color: var(--text);
+        }
+        .hero-title em { font-style: italic; color: var(--accent); }
+        
+        .hero-description { 
+            font-size: 1.1rem; 
+            color: var(--text-muted); 
+            max-width: 480px; 
+            margin-bottom: 2.5rem; 
+            line-height: 1.8; 
+        }
+        .hero-cta { display: flex; gap: 1rem; flex-wrap: wrap; }
+        .hero-right { display: flex; justify-content: flex-end; align-items: center; }
+        .hero-tag { 
+            font-family: 'Instrument Serif', serif;
+            font-style: italic;
+            color: var(--accent);
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
 
-        /* Winnie's Home Page Scraper */
-        .scraper-window { width: 100%; max-width: 480px; background: #1E293B; border-radius: 20px; padding: 1.5rem; color: white; font-family: 'JetBrains Mono'; font-size: 0.75rem; box-shadow: 0 30px 60px rgba(0,0,0,0.3); border: 1px solid #334155; position: relative; overflow: hidden; }
+        /* Scraper Window */
+        .scraper-window { 
+            width: 100%; max-width: 420px; 
+            background: #1E293B; 
+            border-radius: 20px; 
+            padding: 1.5rem; 
+            color: white; 
+            font-family: 'JetBrains Mono'; 
+            font-size: 0.75rem; 
+            box-shadow: 0 30px 60px rgba(0,0,0,0.3); 
+            border: 1px solid #334155; 
+            position: relative; 
+            overflow: hidden; 
+        }
         .scraper-window::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 3px; background: var(--accent-gradient); }
         .win-header { display: flex; justify-content: space-between; margin-bottom: 1rem; opacity: 0.7; font-size: 0.65rem; border-bottom: 1px solid #334155; padding-bottom: 0.5rem; }
-        .log-body { height: 180px; overflow: hidden; display: flex; flex-direction: column; gap: 0.4rem; position: relative; }
-        .log-line { position: relative; white-space: pre-wrap; word-break: break-all; animation: logEntry 0.3s ease forwards; }
+        .log-body { height: 150px; overflow: hidden; display: flex; flex-direction: column; gap: 0.4rem; }
+        .log-line { white-space: pre-wrap; word-break: break-all; animation: logEntry 0.3s ease forwards; }
         @keyframes logEntry { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
-        .log-line:nth-child(even) { opacity: 0.8; }
-        
+
         /* Preview Cards */
-        .preview-card { background: white; border: 1px solid var(--border); padding: 3.5rem; border-radius: 30px; display: grid; grid-template-columns: 1.1fr 280px; gap: 2rem; align-items: center; transition: 0.4s ease; position: relative; box-shadow: 0 5px 15px var(--shadow); }
-        .preview-card:hover { transform: translateY(-7px); border-color: var(--accent); box-shadow: 0 15px 40px var(--shadow-lg); }
+        .preview-card { 
+            background: white; 
+            border: 1px solid var(--border); 
+            padding: 3rem; 
+            border-radius: 24px; 
+            display: grid; 
+            grid-template-columns: 1.2fr 1fr; 
+            gap: 2rem; 
+            align-items: center; 
+            transition: 0.4s ease; 
+            box-shadow: 0 5px 15px var(--shadow); 
+        }
+        .preview-card:hover { 
+            transform: translateY(-7px); 
+            border-color: var(--accent); 
+            box-shadow: 0 15px 40px var(--shadow-lg); 
+        }
 
-        /* Timeline Preview - Career Journey (Matches Image 0 style) */
         .career-visual { text-align: right; }
-        .career-visual-icon { font-size: 4rem; margin-bottom: 0.5rem; } /* Matches requested suitcase or 💼 */
+        .career-visual-icon { font-size: 3.5rem; margin-bottom: 0.5rem; }
         .career-countries-exp { display: flex; justify-content: flex-end; align-items: baseline; gap: 5px; color: var(--accent); }
-        .countries-num { font-size: 1.8rem; font-weight: 700; }
-        .countries-label { font-size: 0.8rem; text-transform: uppercase; font-weight: 600; letter-spacing: 0.05em; }
+        .countries-num { font-size: 1.5rem; font-weight: 700; }
 
-        /* Toolkit Marquee */
+        /* Marquee */
         .marquee-hub { overflow: hidden; padding: 2rem 0; mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent); }
         .marquee-inner { display: flex; gap: 1.5rem; animation: scrollMarquee 35s linear infinite; width: max-content; }
         @keyframes scrollMarquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-        .pill { padding: 0.6rem 1.4rem; background: white; border: 1px solid var(--border); border-radius: 100px; font-size: 0.75rem; white-space: nowrap; font-family: 'JetBrains Mono'; font-weight: 500; color: var(--text-muted); transition: 0.3s; }
-        .pill:hover { border-color: var(--accent); color: var(--accent); transform: scale(1.05); }
+        .pill { 
+            padding: 0.6rem 1.4rem; 
+            background: white; 
+            border: 1px solid var(--border); 
+            border-radius: 100px; 
+            font-size: 0.75rem; 
+            white-space: nowrap; 
+            font-family: 'JetBrains Mono'; 
+            font-weight: 500; 
+            color: var(--text-muted); 
+            transition: 0.3s; 
+        }
+        .pill:hover { border-color: var(--accent); color: var(--accent); }
 
-        /* Pintrend Hub Style */
-        .preview-hub-projects { padding-bottom: 5rem; }
+        /* Footer - Shared */
+        .page-footer { 
+            padding: 3rem 2rem; 
+            text-align: center; 
+            border-top: 1px solid var(--border-light); 
+            background: rgba(255,255,255,0.5); 
+            margin-top: 4rem;
+        }
+        .page-footer .contact-links { margin-bottom: 1.5rem; }
+        .page-footer p { 
+            font-family: 'JetBrains Mono'; 
+            font-size: 0.7rem; 
+            color: var(--text-subtle); 
+        }
 
-        /* Footer */
-        footer { padding: 3rem 6rem; text-align: center; color: var(--text-subtle); font-size: 0.7rem; border-top: 1px solid var(--border-light); background: rgba(255,255,255,0.5); font-family: 'JetBrains Mono'; }
+        /* DETAIL PAGES */
+        .detail-container { 
+            max-width: 1000px; 
+            margin: 0 auto; 
+            padding: 10rem 2rem 3rem; 
+        }
+        .detail-header { text-align: center; margin-bottom: 4rem; }
 
-        /* =========================================
-           DETAILED VIEW PAGES (Router views)
-           ========================================= */
-        .detail-container { max-width: 1000px; margin: 0 auto; padding: 12rem 2rem 5rem; position: relative; }
-        .detail-header { text-align: center; margin-bottom: 5rem; }
+        /* Back Button - More spacing */
+        .back-home { 
+            margin-top: 4rem; 
+            padding-top: 2rem; 
+            border-top: 1px solid var(--border-light); 
+        }
 
-        /* About Detailed */
-        .bio-lead { font-size: 1.3rem; line-height: 1.9; color: var(--text); font-weight: 500; margin-bottom: 2rem; }
+        /* About */
+        .bio-grid { display: grid; grid-template-columns: 1.5fr 1fr; gap: 3rem; }
+        .bio-lead { font-size: 1.2rem; line-height: 1.9; color: var(--text); font-weight: 500; margin-bottom: 1.5rem; }
         .bio-body p { color: var(--text-muted); line-height: 1.9; margin-bottom: 1.5rem; }
-        /* ✅ Education with bottom color (image_15.png, image_20.png style) */
-        .education-box { background: rgba(14, 165, 233, 0.04); padding: 3rem; border-radius: 24px; border: 1px solid var(--border); }
-        .edu-item { margin-bottom: 2rem; }
-        .edu-school { font-weight: 700; color: var(--text); font-size: 1.1rem; }
-        .edu-program { color: var(--accent); font-size: 1rem; margin: 0.2rem 0 0.5rem; }
-        /* ✅ Removed GPA in Detailed About */
+        .education-box { 
+            background: rgba(14, 165, 233, 0.04); 
+            padding: 2.5rem; 
+            border-radius: 20px; 
+            border: 1px solid var(--border); 
+        }
+        .edu-item { margin-bottom: 1.5rem; }
+        .edu-item:last-child { margin-bottom: 0; }
+        .edu-school { font-weight: 700; color: var(--text); font-size: 1rem; }
+        .edu-program { color: var(--accent); font-size: 0.9rem; margin-top: 0.2rem; }
 
-        /* Experience Detailed (Timeline) */
-        .timeline-box { border-left: 1px solid var(--border); padding-left: 3rem; }
-        .timeline-item { position: relative; margin-bottom: 5rem; }
-        .timeline-item::before { content: ''; position: absolute; left: -3.35rem; top: 0.5rem; width: 10px; height: 10px; background: var(--accent); border-radius: 50%; outline: 4px solid var(--bg); display: block; }
+        /* Timeline */
+        .timeline-box { border-left: 2px solid var(--border); padding-left: 2.5rem; }
+        .timeline-item { position: relative; margin-bottom: 3.5rem; }
+        .timeline-item::before { 
+            content: ''; position: absolute; left: -2.85rem; top: 0.5rem; 
+            width: 10px; height: 10px; 
+            background: var(--accent); border-radius: 50%; 
+            outline: 4px solid var(--bg); 
+        }
         .timeline-item:last-child { margin-bottom: 0; }
-        .timeline-date { font-family: 'JetBrains Mono'; font-size: 0.75rem; color: var(--text-subtle); margin-bottom: 0.6rem; font-weight: 500; }
-        .timeline-title { font-weight: 700; font-size: 1.4rem; color: var(--text); margin-bottom: 0.4rem; }
-        .timeline-org { color: var(--accent); font-size: 0.9rem; margin-bottom: 1rem; }
-        .timeline-description { list-style: none; color: var(--text-muted); line-height: 1.8; }
-        .timeline-description li { position: relative; padding-left: 1.5rem; margin-bottom: 0.6rem; }
-        .timeline-description li::before { content: '•'; position: absolute; left: 0; color: var(--accent); font-weight: bold; }
+        .timeline-date { font-family: 'JetBrains Mono'; font-size: 0.7rem; color: var(--text-subtle); margin-bottom: 0.5rem; }
+        .timeline-title { font-weight: 700; font-size: 1.2rem; color: var(--text); margin-bottom: 0.3rem; }
+        .timeline-org { color: var(--accent); font-size: 0.85rem; margin-bottom: 0.8rem; }
+        .timeline-description { list-style: none; color: var(--text-muted); line-height: 1.8; font-size: 0.9rem; }
+        .timeline-description li { position: relative; padding-left: 1.2rem; margin-bottom: 0.5rem; }
+        .timeline-description li::before { content: '•'; position: absolute; left: 0; color: var(--accent); }
 
-        /* Skills Detailed (Categorized Grid) */
-        .skills-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; margin-top: 3rem; }
-        .skill-cat { background: white; padding: 2.5rem; border-radius: 20px; border: 1px solid var(--border); transition: 0.3s ease; box-shadow: 0 5px 10px var(--shadow); }
+        /* Skills Grid */
+        .skills-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin-top: 2rem; }
+        .skill-cat { 
+            background: white; 
+            padding: 2rem; 
+            border-radius: 16px; 
+            border: 1px solid var(--border); 
+            transition: 0.3s ease; 
+            box-shadow: 0 5px 10px var(--shadow); 
+        }
         .skill-cat:hover { border-color: var(--accent); transform: translateY(-5px); box-shadow: 0 10px 30px var(--shadow-lg); }
-        .skill-cat h4 { margin-bottom: 1.5rem; font-family: 'Instrument Serif'; font-size: 1.8rem; border-bottom: 1px solid var(--border); padding-bottom: 1rem; font-weight: 400; color: var(--accent); }
-        .skill-list-body { color: var(--text-muted); line-height: 1.9; font-size: 0.9rem; }
+        .skill-cat h4 { 
+            margin-bottom: 1rem; 
+            font-family: 'Instrument Serif'; 
+            font-size: 1.5rem; 
+            border-bottom: 1px solid var(--border); 
+            padding-bottom: 0.8rem; 
+            font-weight: 400; 
+            color: var(--accent); 
+        }
+        .skill-list-body { color: var(--text-muted); line-height: 1.8; font-size: 0.85rem; }
         .skill-list-body span { font-family: 'JetBrains Mono'; font-weight: 500; color: var(--text); }
 
-        /* Projects Detailed (Full Dashboard Mockup) */
-        .dashboard-full { background: white; border: 1px solid var(--border); border-radius: 30px; padding: 2.5rem; margin-top: 2rem; box-shadow: 0 10px 40px var(--shadow); }
-        .db-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); padding-bottom: 1.5rem; margin-bottom: 2.5rem; }
-        .db-logo { font-size: 1rem; font-weight: 700; color: var(--pin-red); }
-        .db-stat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-bottom: 2.5rem; }
-        .db-stat-card { background: var(--bg); padding: 2rem; border-radius: 16px; border: 1px solid var(--border); text-align: center; }
-        .db-val { font-family: 'Instrument Serif'; font-size: clamp(2.2rem, 4vw, 3rem); color: var(--pin-red); line-height: 1; }
-        .db-label { font-size: 0.6rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.1em; margin-top: 0.5rem; font-family: 'JetBrains Mono'; }
-        .db-viz { height: 280px; background: #fdfdfd; border-radius: 16px; border: 1px solid var(--border); position: relative; display: flex; align-items: center; justify-content: center; overflow: hidden; }
-        .chart-mock { stroke: var(--pin-red); stroke-width: 3.5; fill: none; }
+        /* Projects - Dashboard Cards */
+        .project-card { 
+            background: white; 
+            border: 1px solid var(--border); 
+            border-radius: 24px; 
+            padding: 2rem; 
+            margin-bottom: 2.5rem; 
+            box-shadow: 0 10px 40px var(--shadow); 
+        }
+        .project-header { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            border-bottom: 1px solid var(--border); 
+            padding-bottom: 1.5rem; 
+            margin-bottom: 2rem; 
+        }
+        .project-logo { font-size: 1rem; font-weight: 700; }
+        .project-logo.pinterest { color: var(--pin-red); }
+        .project-logo.foodmap { color: var(--food-orange); }
+        
+        .project-stat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-bottom: 2rem; }
+        .project-stat { 
+            background: var(--bg); 
+            padding: 1.5rem; 
+            border-radius: 12px; 
+            border: 1px solid var(--border); 
+            text-align: center; 
+        }
+        .project-stat-val { 
+            font-family: 'Instrument Serif'; 
+            font-size: clamp(1.8rem, 3vw, 2.5rem); 
+            line-height: 1; 
+        }
+        .project-stat-val.pinterest { color: var(--pin-red); }
+        .project-stat-val.foodmap { color: var(--food-orange); }
+        .project-stat-label { 
+            font-size: 0.6rem; 
+            color: var(--text-muted); 
+            text-transform: uppercase; 
+            letter-spacing: 0.1em; 
+            margin-top: 0.5rem; 
+            font-family: 'JetBrains Mono'; 
+        }
 
-        /* Modal / Pop-up styles */
-        .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5); backdrop-filter: blur(5px); z-index: 2000; align-items: center; justify-content: center; }
+        .project-viz { 
+            height: 200px; 
+            background: var(--bg-subtle); 
+            border-radius: 16px; 
+            border: 1px solid var(--border); 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            position: relative; 
+            overflow: hidden; 
+        }
+        .project-links { 
+            position: absolute; 
+            bottom: 1rem; 
+            right: 1rem; 
+            display: flex; 
+            gap: 0.75rem; 
+        }
+        .project-links .btn { font-size: 0.65rem; padding: 0.6rem 1.2rem; }
+
+        .chart-mock { stroke-width: 3; fill: none; }
+        .chart-mock.pinterest { stroke: var(--pin-red); }
+        .chart-mock.foodmap { stroke: var(--food-orange); }
+
+        /* Modal */
+        .modal-overlay { 
+            display: none; 
+            position: fixed; inset: 0; 
+            background: rgba(0,0,0,0.5); 
+            backdrop-filter: blur(5px); 
+            z-index: 2000; 
+            align-items: center; 
+            justify-content: center; 
+        }
         .modal-overlay.active { display: flex; animation: modalIn 0.4s ease; }
-        @keyframes modalIn { from { opacity: 0; transform: translateY(20px) scale(0.95); } to { opacity: 1; transform: translateY(0) scale(1); } }
-        .modal-content { background: white; padding: 3rem; border-radius: 24px; text-align: center; max-width: 420px; width: 90%; box-shadow: 0 20px 60px rgba(0,0,0,0.2); }
+        @keyframes modalIn { from { opacity: 0; } to { opacity: 1; } }
+        .modal-content { 
+            background: white; 
+            padding: 2.5rem; 
+            border-radius: 20px; 
+            text-align: center; 
+            max-width: 400px; 
+            width: 90%; 
+            box-shadow: 0 20px 60px rgba(0,0,0,0.2); 
+        }
+
+        /* ========== RESPONSIVE ========== */
+        @media (max-width: 1024px) {
+            .hero-wrap { grid-template-columns: 1fr; padding: 0 2rem; text-align: center; }
+            .hero-right { justify-content: center; margin-top: 2rem; }
+            .hero-description { margin: 0 auto 2rem; }
+            .hero-cta { justify-content: center; }
+            .preview-card { grid-template-columns: 1fr; text-align: center; }
+            .career-visual { text-align: center; margin-top: 1rem; }
+            .career-countries-exp { justify-content: center; }
+            .bio-grid { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 768px) {
+            nav { padding: 1rem 1.5rem; }
+            .nav-links { 
+                display: none; 
+                position: absolute; 
+                top: 100%; left: 0; right: 0; 
+                background: rgba(248, 250, 252, 0.98); 
+                flex-direction: column; 
+                padding: 1.5rem; 
+                gap: 1rem; 
+                border-bottom: 1px solid var(--border); 
+            }
+            .nav-links.active { display: flex; }
+            .nav-toggle { display: block; }
+            
+            .home-section { padding: 4rem 1.5rem; }
+            .hero-wrap { min-height: auto; padding: 8rem 1.5rem 4rem; }
+            .hero-title { font-size: 2.2rem; }
+            .scraper-window { max-width: 100%; }
+            
+            .preview-card { padding: 2rem; }
+            .section-title { font-size: 1.8rem; }
+            
+            .detail-container { padding: 8rem 1.5rem 2rem; }
+            .skills-grid { grid-template-columns: 1fr; }
+            .project-stat-grid { grid-template-columns: 1fr; }
+            
+            .contact-links { gap: 1rem; }
+            .icon-btn { width: 48px; height: 48px; }
+        }
+
+        @media (max-width: 480px) {
+            .hero-title { font-size: 1.8rem; }
+            .hero-cta { flex-direction: column; width: 100%; }
+            .hero-cta .btn { width: 100%; justify-content: center; }
+            .btn { padding: 0.7rem 1.2rem; font-size: 0.7rem; }
+            .preview-card { padding: 1.5rem; }
+        }
     </style>
 </head>
 <body>
 
     <div class="bg-gradient"><div class="blob blob-1"></div><div class="blob blob-2"></div></div>
-    <div class="cursor"></div><div class="cursor-dot"></div>
 
     <nav>
         <div class="logo" onclick="showView('home')">Home</div>
-        <ul class="nav-links">
-            <li><a onclick="showView('detailed-about')" id="nav-about">About</a></li>
-            <li><a onclick="showView('detailed-experience')" id="nav-experience">Experience</a></li>
-            <li><a onclick="showView('detailed-skills')" id="nav-skills">Skills</a></li>
-            <li><a onclick="showView('detailed-projects')" id="nav-projects">Projects</a></li>
-            <li><a onclick="showView('detailed-contact')" id="nav-contact">Contact</a></li>
+        <button class="nav-toggle" onclick="toggleNav()">
+            <span></span><span></span><span></span>
+        </button>
+        <ul class="nav-links" id="navLinks">
+            <li><a onclick="showView('detailed-about'); closeNav()" id="nav-about">About</a></li>
+            <li><a onclick="showView('detailed-experience'); closeNav()" id="nav-experience">Experience</a></li>
+            <li><a onclick="showView('detailed-skills'); closeNav()" id="nav-skills">Skills</a></li>
+            <li><a onclick="showView('detailed-projects'); closeNav()" id="nav-projects">Projects</a></li>
+            <li><a onclick="showView('detailed-contact'); closeNav()" id="nav-contact">Contact</a></li>
         </ul>
     </nav>
 
+    <!-- ========== HOME ========== -->
     <main id="home" class="view active">
         <section class="hero-wrap home-section">
             <div class="hero-left">
                 <div class="hero-tag"><em>Business Analyst</em></div>
-                <h1 class="hero-title">Turning <span><em>data</em> into</span> decisions.</h1>
-                <p class="hero-description">Data-driven analyst bridging marketing strategy and technical engineering to create measurable impact.</p>
+                <h1 class="hero-title">Turning <em>data</em> into decisions.</h1>
+                <p class="hero-description">Bridging marketing strategy and technical engineering to create measurable impact.</p>
                 <div class="hero-cta">
                     <button onclick="showView('detailed-projects')" class="btn btn-primary">View Featured Work</button>
                     <button onclick="showView('detailed-contact')" class="btn btn-secondary">Get in Touch</button>
@@ -214,7 +527,7 @@
                 <div class="scraper-window">
                     <div class="win-header">
                         <span>Winnie's_Home_Page.py</span>
-                        <div class="status-active" style="color: #10B981; font-weight: 600;">ACTIVE_SESSION</div>
+                        <div style="color: #10B981; font-weight: 600;">ACTIVE_SESSION</div>
                     </div>
                     <div class="log-body" id="scraperLog">
                         <div class="log-line">&gt; init playwright_engine...</div>
@@ -232,13 +545,13 @@
             <div class="section-label">01 — Profile</div>
             <div class="preview-card">
                 <div>
-                    <h2 class="section-title" style="font-size: 2.5rem; margin-bottom:1rem; font-weight:400;">Creating impact through <em>insight</em></h2>
-                    <p style="color: var(--text-muted); margin-bottom: 2.5rem; font-size:1.1rem; line-height:1.9;">Bridging marketing strategy and technical engineering to generate measurable impact for Terradomi Candle Co.</p>
+                    <h2 class="section-title" style="font-size: 2rem;">Creating impact through <em>insight</em></h2>
+                    <p style="color: var(--text-muted); margin-bottom: 2rem; font-size:1rem; line-height:1.8;">Bridging marketing strategy and technical engineering to generate measurable impact.</p>
                     <button onclick="showView('detailed-about')" class="btn btn-secondary">Read Full Bio</button>
                 </div>
                 <div style="text-align:right;">
-                    <div style="font-size: 1rem; color: var(--accent); font-weight: 700; margin-bottom: 1rem;">Humber College</div>
-                    <div style="font-size: 0.7rem; color:var(--text-subtle);">STUDENT BASE</div>
+                    <div style="font-size: 1rem; color: var(--accent); font-weight: 700; margin-bottom: 0.5rem;">Humber College</div>
+                    <div style="font-size: 0.7rem; color:var(--text-subtle); text-transform: uppercase;">Student Base</div>
                 </div>
             </div>
         </section>
@@ -247,105 +560,133 @@
             <div class="section-label">02 — Career Timeline</div>
             <div class="preview-card">
                 <div>
-                    <h2 class="section-title" style="font-size: 2.5rem; margin-bottom:1rem; font-weight:400;">The Professional Journey</h2>
-                    <p style="color: var(--text-muted); margin-bottom: 2.5rem; font-size:1.1rem; line-height:1.9;">From logistics customer success specialist to digital marketing analyst coordinator — a journey of data optimization.</p>
+                    <h2 class="section-title" style="font-size: 2rem;">The Professional Journey</h2>
+                    <p style="color: var(--text-muted); margin-bottom: 2rem; font-size:1rem; line-height:1.8;">A journey of data optimization.</p>
                     <button onclick="showView('detailed-experience')" class="btn btn-secondary">Full Timeline</button>
                 </div>
                 <div class="career-visual">
-                    <div class="career-visual-icon">💼</div> <div class="career-countries-exp">
+                    <div class="career-visual-icon">💼</div>
+                    <div class="career-countries-exp">
                         <div class="countries-num">2 Countries</div>
                     </div>
-                    <div style="font-size: 0.65rem; color: var(--text-subtle); text-transform: uppercase;">WORKING EXPERIENCE</div>
+                    <div style="font-size: 0.65rem; color: var(--text-subtle); text-transform: uppercase;">Working Experience</div>
                 </div>
             </div>
         </section>
 
         <section id="home-toolkit" class="home-section">
             <div class="section-label">03 — Toolkit</div>
-            <h2 class="section-title" style="font-size: 2.5rem; margin-bottom:2rem; font-weight:400;">Technical Proficiency</h2>
+            <h2 class="section-title" style="font-size: 2rem;">Technical Proficiency</h2>
             <div class="marquee-hub">
                 <div class="marquee-inner">
                     <span class="pill">Python</span><span class="pill">SQL</span><span class="pill">GA4</span><span class="pill">Power BI</span><span class="pill">Technical SEO</span><span class="pill">ETL Pipeline</span><span class="pill">Playwright</span>
                     <span class="pill">Python</span><span class="pill">SQL</span><span class="pill">GA4</span><span class="pill">Power BI</span><span class="pill">Technical SEO</span><span class="pill">ETL Pipeline</span><span class="pill">Playwright</span>
                 </div>
             </div>
-            <div style="text-align:center; margin-top:2rem;"><button onclick="showView('detailed-skills')" class="btn btn-secondary">Skill Categories</button></div>
+            <div style="text-align:center; margin-top:2rem;">
+                <button onclick="showView('detailed-skills')" class="btn btn-secondary">Skill Categories</button>
+            </div>
         </section>
 
-        <section id="home-projects-preview" class="home-section preview-hub-projects">
+        <section id="home-projects-preview" class="home-section">
             <div class="section-label">04 — Selected Work</div>
-            <div class="preview-card" style="background: white; color:var(--text); border:1px solid var(--border);">
+            <div class="preview-card">
                 <div>
-                    <h2 class="section-title" style="font-size: 2.5rem; margin-bottom:1rem; font-weight:400;">PinTrend Analytics</h2>
-                    <p style="color: var(--text-muted); margin-bottom: 2.5rem; font-size:1.1rem; line-height:1.9;">Bypassing API limits with a custom Python scraper for internal business data.</p>
-                    <button onclick="showView('detailed-projects')" class="btn btn-primary">Feature Page</button>
+                    <h2 class="section-title" style="font-size: 2rem;">PinTrend <em>Analytics</em></h2>
+                    <p style="color: var(--text-muted); margin-bottom: 2rem; font-size:1rem; line-height:1.8;">Bypassing API limits with a custom Python scraper for internal business data.</p>
+                    <button onclick="showView('detailed-projects')" class="btn btn-primary">View Projects</button>
                 </div>
                 <div style="text-align:right;">
-                    <svg width="60" height="60" viewBox="0 0 24 24" fill="var(--pin-red)"><path d="M12 0c-6.627 0-12 5.373-12 12 0 5.084 3.163 9.426 7.627 11.174-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.965 1.406-5.965s-.359-.718-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738.098.119.112.224.083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.261 7.929-7.261 4.162 0 7.398 2.967 7.398 6.93 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.631-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146 1.124.347 2.317.535 3.554.535 6.627 0 12-5.373 12-12s-5.373-12-12-12z"/></svg>
+                    <svg width="50" height="50" viewBox="0 0 24 24" fill="var(--pin-red)"><path d="M12 0c-6.627 0-12 5.373-12 12 0 5.084 3.163 9.426 7.627 11.174-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.965 1.406-5.965s-.359-.718-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738.098.119.112.224.083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.261 7.929-7.261 4.162 0 7.398 2.967 7.398 6.93 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.631-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146 1.124.347 2.317.535 3.554.535 6.627 0 12-5.373 12-12s-5.373-12-12-12z"/></svg>
                 </div>
             </div>
         </section>
 
         <section id="home-contact-hub" class="home-section" style="text-align:center;">
-            <div class="section-label">05 — Connect</div>
+            <div class="section-label" style="justify-content: center;">05 — Connect</div>
             <h1 class="section-title">Let's <em>Connect & Chat!</em></h1>
-            <p style="color:var(--text-muted); max-width:550px; margin: 0 auto; line-height:1.9;">Open for new opportunities, collaborations, or discussing analytics insights.</p>
+            <p style="color:var(--text-muted); max-width:500px; margin: 0 auto; line-height:1.8;">Open for new opportunities, collaborations, or discussing analytics insights.</p>
             <div class="contact-links">
-                <div class="icon-btn" onclick="openEmailModal()" title="Email"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg></div>
-                <a href="https://www.linkedin.com/in/weichiang13" target="_blank" class="icon-btn" title="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></a>
-                <a href="https://github.com/weiweichiang0813-art" target="_blank" class="icon-btn" title="GitHub"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.041-1.472-4.041-1.472-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></a>
+                <div class="icon-btn" onclick="openEmailModal()" title="Email">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+                        <path d="M22 7l-10 6L2 7"></path>
+                    </svg>
+                </div>
+                <a href="https://www.linkedin.com/in/weichiang13" target="_blank" class="icon-btn" title="LinkedIn">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                </a>
+                <a href="https://github.com/weiweichiang0813-art" target="_blank" class="icon-btn" title="GitHub">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.041-1.472-4.041-1.472-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                </a>
             </div>
         </section>
 
-        <footer>© 2026 WEI WEI CHIANG — TORONTO</footer>
+        <footer class="page-footer">
+            <p>© 2026 WINNIE CHIANG — TORONTO</p>
+        </footer>
     </main>
 
+    <!-- ========== ABOUT ========== -->
     <section id="detailed-about" class="view">
         <div class="detail-container">
             <div class="section-label">Detailed Profile</div>
             <h2 class="section-title">Creating impact through <em>insight</em></h2>
-            <div style="display:grid; grid-template-columns:1.5fr 1fr; gap:4rem;">
+            <div class="bio-grid">
                 <div class="bio-body">
                     <div class="bio-lead">Result-oriented Business Analyst with a strong background in marketing analytics and data automation.</div>
                     <p>My specialty lies in bridging the gap between technical data engineering and strategic marketing decisions. I focus on automating data pipelines using Python and constructing intuitive dashboards that empower teams to derive impactful insights from complex datasets.</p>
                 </div>
                 <div class="education-box">
-                    <h4 style="font-family:'Instrument Serif'; font-weight:400; margin-bottom:1rem; font-size:1.8rem; color:var(--accent);">Education</h4>
+                    <h4 style="font-family:'Instrument Serif'; font-weight:400; margin-bottom:1.5rem; font-size:1.5rem; color:var(--accent);">Education</h4>
                     <div class="edu-item">
                         <div class="edu-school">Humber Polytechnic, Canada</div>
                         <div class="edu-program">Business Insights & Analytics</div>
-                        </div>
+                    </div>
                     <div class="edu-item">
                         <div class="edu-school">Ming Chuan University</div>
                         <div class="edu-program">International Business</div>
                     </div>
                 </div>
             </div>
-            <div class="back-home"><button onclick="showView('home')" class="btn btn-secondary">← Back Hub</button></div>
+            <div class="back-home">
+                <button onclick="showView('home')" class="btn btn-secondary">← Back to Home</button>
+            </div>
         </div>
+        <footer class="page-footer">
+            <div class="contact-links">
+                <div class="icon-btn" onclick="openEmailModal()" title="Email">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="M22 7l-10 6L2 7"></path></svg>
+                </div>
+                <a href="https://www.linkedin.com/in/weichiang13" target="_blank" class="icon-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></a>
+                <a href="https://github.com/weiweichiang0813-art" target="_blank" class="icon-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.041-1.472-4.041-1.472-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></a>
+            </div>
+            <p>© 2026 WINNIE CHIANG — TORONTO</p>
+        </footer>
     </section>
 
+    <!-- ========== EXPERIENCE ========== -->
     <section id="detailed-experience" class="view">
         <div class="detail-container">
-            <div class="section-label">Milestones Detailed</div>
-            <h2 class="section-title">Professional <em>journey</em></h2>
+            <div class="section-label">Milestones</div>
+            <h2 class="section-title">Professional <em>Journey</em></h2>
             <div class="timeline-box">
                 <div class="timeline-item">
                     <div class="timeline-date">JAN 2026 — APR 2026</div>
                     <div class="timeline-title">Digital Marketing & Analytics Coordinator</div>
                     <div class="timeline-org">Terradomi Candle Co.</div>
                     <ul class="timeline-description">
-                        <li>Automated daily Pinterest public & private metrics extraction by developing a custom Python/Playwright scraper.</li>
-                        <li>Designed GA4 performace dashboards to optimize campaign performance (ROAS).</li>
+                        <li>Automated daily Pinterest metrics extraction with custom Python/Playwright scraper.</li>
+                        <li>Designed GA4 performance dashboards to optimize campaign ROAS.</li>
                     </ul>
                 </div>
                 <div class="timeline-item">
                     <div class="timeline-date">MAY 2022 — JUN 2024</div>
-                    <div class="timeline-title">Customer Success Specialist (Analytics Logistics)</div>
+                    <div class="timeline-title">Customer Success Specialist</div>
                     <div class="timeline-org">Linehaul Express / DPD Taiwan</div>
                     <ul class="timeline-description">
                         <li>Coordinated complex cross-border supply chain operations.</li>
-                        <li>Conducted root-cause analytics; reduced logistical delays by 15% through predictive route analysis.</li>
+                        <li>Reduced logistical delays by 15% through predictive route analysis.</li>
                         <li>Supported Amazon FBA fulfillment tracking with performance reporting.</li>
                     </ul>
                 </div>
@@ -354,19 +695,30 @@
                     <div class="timeline-title">Brand Marketing Executive Intern</div>
                     <div class="timeline-org">Diamond VDM International — Taipei</div>
                     <ul class="timeline-description">
-                        <li>Analyzed market media data to identify trend-setting creatives and competitor strategies.</li>
-                        <li>Evaluated digital engagement metrics across social channels to refine content strategy.</li>
+                        <li>Analyzed market media data to identify trends and competitor strategies.</li>
+                        <li>Evaluated digital engagement metrics to refine content strategy.</li>
                     </ul>
                 </div>
             </div>
-            <div class="back-home"><button onclick="showView('home')" class="btn btn-secondary">← Back Hub</button></div>
+            <div class="back-home">
+                <button onclick="showView('home')" class="btn btn-secondary">← Back to Home</button>
+            </div>
         </div>
+        <footer class="page-footer">
+            <div class="contact-links">
+                <div class="icon-btn" onclick="openEmailModal()" title="Email"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="M22 7l-10 6L2 7"></path></svg></div>
+                <a href="https://www.linkedin.com/in/weichiang13" target="_blank" class="icon-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></a>
+                <a href="https://github.com/weiweichiang0813-art" target="_blank" class="icon-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.041-1.472-4.041-1.472-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></a>
+            </div>
+            <p>© 2026 WINNIE CHIANG — TORONTO</p>
+        </footer>
     </section>
 
+    <!-- ========== SKILLS ========== -->
     <section id="detailed-skills" class="view">
         <div class="detail-container">
-            <div class="section-label">Detailed Categorization</div>
-            <h2 class="section-title">My Technical <em>toolkit</em></h2>
+            <div class="section-label">Technical Stack</div>
+            <h2 class="section-title">My Technical <em>Toolkit</em></h2>
             <div class="skills-grid">
                 <div class="skill-cat">
                     <h4>Data Science</h4>
@@ -382,91 +734,154 @@
                 </div>
                 <div class="skill-cat">
                     <h4>Marketing Tech</h4>
-                    <div class="skill-list-body">Google Analytics 4, technical SEO, GTM.</div>
+                    <div class="skill-list-body">Google Analytics 4, Technical SEO, GTM.</div>
                 </div>
             </div>
-            <div class="back-home"><button onclick="showView('home')" class="btn btn-secondary">← Back Hub</button></div>
-        </div>
-    </section>
-
-    <section id="detailed-projects" class="view">
-        <div class="detail-container">
-            <div class="section-label">Flagship Project Detailed</div>
-            <h2 class="section-title">PinTrend <em>Analytics</em> Dashboard</h2>
-            <p style="color:var(--text-muted); max-width:700px; margin-bottom:2.5rem; line-height:1.9;">A custom data solution built to bypass API limitations, providing daily insights through an end-to-end automated pipeline and dynamic visualization.</p>
-            
-            <div class="dashboard-full">
-                <div class="db-header">
-                    <div class="db-logo">Pintrend.v5</div>
-                    <div class="db-sync-info"> Last Sync: 2026-03-12 | LIVE</div>
-                </div>
-                <div class="db-stat-grid">
-                    <div class="db-stat-card"><div class="db-val">474.2k</div><div class="db-label">Impressions</div></div>
-                    <div class="db-stat-card"><div class="db-val">12.5k</div><div class="db-label">Pin Clicks</div></div>
-                    <div class="db-stat-card"><div class="db-val">10.8%</div><div class="db-label">Engagement</div></div>
-                </div>
-                <div class="db-viz">
-                    <svg viewBox="0 0 500 120" style="width:100%; height:auto;" class="chart-mock">
-                        <path d="M0,100 Q50,60 100,80 T200,60 T300,90 T400,30 T500,50"></path>
-                    </svg>
-                    <div style="position:absolute; bottom:1rem; right:1.2rem; display:flex; gap:1rem; justify-content:center;">
-                        <a href="https://weiweichiang0813-art.github.io/pinterest-analytics/" target="_blank" class="btn btn-primary" style="font-size:0.6rem;">Launch Live Tool</a>
-                        <a href="https://github.com/weiweichiang0813-art/pinterest-analytics" target="_blank" class="btn btn-secondary" style="font-size:0.6rem;">Source Code</a>
-                    </div>
-                </div>
+            <div class="back-home">
+                <button onclick="showView('home')" class="btn btn-secondary">← Back to Home</button>
             </div>
-            
-            <div class="back-home"><button onclick="showView('home')" class="btn btn-secondary">← Back Hub</button></div>
         </div>
-    </section>
-
-    <section id="detailed-contact" class="view" style="text-align:center;">
-        <div class="detail-container">
-            <h1 class="section-title">Let's <em>Connect!</em></h1>
+        <footer class="page-footer">
             <div class="contact-links">
-                <div class="icon-btn" onclick="openEmailModal()" title="Email"><svg viewBox="0 0 24 24" width="24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg></div>
+                <div class="icon-btn" onclick="openEmailModal()" title="Email"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="M22 7l-10 6L2 7"></path></svg></div>
                 <a href="https://www.linkedin.com/in/weichiang13" target="_blank" class="icon-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></a>
                 <a href="https://github.com/weiweichiang0813-art" target="_blank" class="icon-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.041-1.472-4.041-1.472-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></a>
             </div>
-            
-            <div class="back-home"><button onclick="showView('home')" class="btn btn-secondary">← Back Home</button></div>
-        </div>
+            <p>© 2026 WINNIE CHIANG — TORONTO</p>
+        </footer>
     </section>
 
+    <!-- ========== PROJECTS ========== -->
+    <section id="detailed-projects" class="view">
+        <div class="detail-container">
+            <div class="section-label">Featured Work</div>
+            <h2 class="section-title">My <em>Projects</em></h2>
+
+            <!-- Pinterest Analytics -->
+            <div class="project-card">
+                <div class="project-header">
+                    <div class="project-logo pinterest">🔴 PinTrend Analytics</div>
+                    <div style="font-size:0.7rem; color:var(--text-subtle);">Last Sync: 2026-03-12</div>
+                </div>
+                <p style="color:var(--text-muted); margin-bottom:1.5rem; line-height:1.8;">A custom data solution built to bypass API limitations, providing daily insights through an end-to-end automated pipeline and dynamic visualization.</p>
+                <div class="project-stat-grid">
+                    <div class="project-stat"><div class="project-stat-val pinterest">474.2k</div><div class="project-stat-label">Impressions</div></div>
+                    <div class="project-stat"><div class="project-stat-val pinterest">12.5k</div><div class="project-stat-label">Pin Clicks</div></div>
+                    <div class="project-stat"><div class="project-stat-val pinterest">10.8%</div><div class="project-stat-label">Engagement</div></div>
+                </div>
+                <div class="project-viz">
+                    <svg viewBox="0 0 500 100" style="width:90%; height:auto;">
+                        <path class="chart-mock pinterest" d="M0,80 Q60,40 120,60 T240,30 T360,70 T480,20"></path>
+                    </svg>
+                    <div class="project-links">
+                        <a href="https://weiweichiang0813-art.github.io/pinterest-analytics/" target="_blank" class="btn btn-primary">Live Tool</a>
+                        <a href="https://github.com/weiweichiang0813-art/pinterest-analytics" target="_blank" class="btn btn-secondary">Source Code</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Food Map -->
+            <div class="project-card">
+                <div class="project-header">
+                    <div class="project-logo foodmap">🍽️ Winnie's Food Map</div>
+                    <div style="font-size:0.7rem; color:var(--text-subtle);">Personal Project</div>
+                </div>
+                <p style="color:var(--text-muted); margin-bottom:1.5rem; line-height:1.8;">An interactive food exploration map documenting culinary adventures across Canada.</p>
+                <div class="project-stat-grid">
+                    <div class="project-stat"><div class="project-stat-val foodmap">82</div><div class="project-stat-label">Places Visited</div></div>
+                    <div class="project-stat"><div class="project-stat-val foodmap">15</div><div class="project-stat-label">Cities Explored</div></div>
+                    <div class="project-stat"><div class="project-stat-val foodmap">16</div><div class="project-stat-label">Cuisines Tasted</div></div>
+                </div>
+                <div class="project-viz">
+                    <svg viewBox="0 0 500 100" style="width:90%; height:auto;">
+                        <path class="chart-mock foodmap" d="M0,50 Q80,20 160,60 T320,40 T480,70"></path>
+                    </svg>
+                    <div class="project-links">
+                        <a href="https://weiweichiang0813-art.github.io/notion/" target="_blank" class="btn btn-primary">Explore Map</a>
+                        <a href="https://github.com/weiweichiang0813-art/notion" target="_blank" class="btn btn-secondary">Source Code</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="back-home">
+                <button onclick="showView('home')" class="btn btn-secondary">← Back to Home</button>
+            </div>
+        </div>
+        <footer class="page-footer">
+            <div class="contact-links">
+                <div class="icon-btn" onclick="openEmailModal()" title="Email"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="M22 7l-10 6L2 7"></path></svg></div>
+                <a href="https://www.linkedin.com/in/weichiang13" target="_blank" class="icon-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></a>
+                <a href="https://github.com/weiweichiang0813-art" target="_blank" class="icon-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.041-1.472-4.041-1.472-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></a>
+            </div>
+            <p>© 2026 WINNIE CHIANG — TORONTO</p>
+        </footer>
+    </section>
+
+    <!-- ========== CONTACT ========== -->
+    <section id="detailed-contact" class="view">
+        <div class="detail-container" style="text-align:center;">
+            <h1 class="section-title">Let's <em>Connect!</em></h1>
+            <p style="color:var(--text-muted); max-width:500px; margin: 0 auto 2rem; line-height:1.8;">Open for new opportunities, collaborations, or discussing analytics insights.</p>
+            <div class="contact-links" style="justify-content:center;">
+                <div class="icon-btn" onclick="openEmailModal()" title="Email">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="M22 7l-10 6L2 7"></path></svg>
+                </div>
+                <a href="https://www.linkedin.com/in/weichiang13" target="_blank" class="icon-btn">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                </a>
+                <a href="https://github.com/weiweichiang0813-art" target="_blank" class="icon-btn">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.041-1.472-4.041-1.472-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                </a>
+            </div>
+            <div class="back-home">
+                <button onclick="showView('home')" class="btn btn-secondary">← Back to Home</button>
+            </div>
+        </div>
+        <footer class="page-footer">
+            <p>© 2026 WINNIE CHIANG — TORONTO</p>
+        </footer>
+    </section>
+
+    <!-- Email Modal -->
     <div class="modal-overlay" id="emailModal" onclick="closeEmailModal()">
         <div class="modal-content" onclick="event.stopPropagation()">
-            <div style="background:rgba(14, 165, 233, 0.06); width:70px; height:70px; border-radius:18px; display:flex; align-items:center; justify-content:center; margin: 0 auto 1.5rem; color:var(--accent);">
-                <svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+            <div style="background:var(--accent-dim); width:60px; height:60px; border-radius:16px; display:flex; align-items:center; justify-content:center; margin: 0 auto 1.5rem; color:var(--accent);">
+                <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="M22 7l-10 6L2 7"></path></svg>
             </div>
-            <h3 style="margin-bottom:1rem; font-family:'Instrument Serif'; font-size:2rem; color:var(--text)">Connect with Winnie</h3>
-            <p style="font-size:0.9rem; color:var(--text-muted); margin-bottom:0.5rem;">My Email Address:</p>
-            <div style="font-family:'JetBrains Mono'; background:var(--bg-subtle); padding:1rem; border-radius:12px; margin-bottom:2.5rem; color:var(--text); font-weight:600; border:1px solid var(--border)">weiweichiang0813@gmail.com</div>
+            <h3 style="margin-bottom:1rem; font-family:'Instrument Serif'; font-size:1.8rem; color:var(--text)">Connect with Winnie</h3>
+            <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:0.5rem;">My Email Address:</p>
+            <div style="font-family:'JetBrains Mono'; background:var(--bg-subtle); padding:1rem; border-radius:10px; margin-bottom:2rem; color:var(--text); font-weight:600; border:1px solid var(--border); font-size:0.85rem;">weiweichiang0813@gmail.com</div>
             <a href="mailto:weiweichiang0813@gmail.com" class="btn btn-primary" style="width:100%; justify-content:center;">Send Email Now</a>
         </div>
     </div>
 
     <script>
-        // Router System
+        // Router
         function showView(viewId) {
             document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
             document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
-            
             const target = document.getElementById(viewId);
             if(target) target.classList.add('active');
-            
-            // Sync Navbar Active state
             document.querySelectorAll('.nav-links a').forEach(a => {
-                const navKey = a.id.split('-')[1]; // e.g., 'nav-experience' -> 'experience'
+                const navKey = a.id.split('-')[1];
                 if(viewId.includes(navKey)) a.classList.add('active');
             });
             window.scrollTo(0, 0);
         }
 
-        // Email Modal Logic
+        // Mobile Nav
+        function toggleNav() {
+            document.getElementById('navLinks').classList.toggle('active');
+        }
+        function closeNav() {
+            document.getElementById('navLinks').classList.remove('active');
+        }
+
+        // Email Modal
         function openEmailModal() { document.getElementById('emailModal').classList.add('active'); }
         function closeEmailModal() { document.getElementById('emailModal').classList.remove('active'); }
 
-        // Home Page Scraper Log
+        // Scraper Animation
         const logBody = document.getElementById('scraperLog');
         const logs = [
             '> initialising playwright_engine...',
@@ -480,15 +895,8 @@
         setInterval(() => {
             logBody.innerHTML += `<div class="log-line">${logs[idx]}</div>`;
             idx = (idx + 1) % logs.length;
-            if(logBody.childElementCount > 6) logBody.removeChild(logBody.firstElementChild);
+            if(logBody.childElementCount > 5) logBody.removeChild(logBody.firstElementChild);
         }, 2500);
-
-        // Global Cursor
-        const cursor = document.querySelector('.cursor'); const cursorDot = document.querySelector('.cursor-dot');
-        document.addEventListener('mousemove', (e) => {
-            cursor.style.left = e.clientX - 10 + 'px'; cursor.style.top = e.clientY - 10 + 'px';
-            cursorDot.style.left = e.clientX - 2 + 'px'; cursorDot.style.top = e.clientY - 2 + 'px';
-        });
     </script>
 </body>
 </html>
